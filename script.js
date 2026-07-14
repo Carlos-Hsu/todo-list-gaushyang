@@ -214,4 +214,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }, statsObserverOptions);
 
     stats.forEach(el => statsObserver.observe(el));
+
+    // 10. 最後更新時間顯示
+    const lastUpdatedEl = document.getElementById('last-updated');
+    if (lastUpdatedEl) {
+        const now = new Date();
+        const formattedDate = now.toLocaleString('zh-TW', { 
+            year: 'numeric', month: '2-digit', day: '2-digit', 
+            hour: '2-digit', minute: '2-digit', second: '2-digit' 
+        });
+        lastUpdatedEl.textContent = `最後更新時間：${formattedDate}`;
+    }
 });
