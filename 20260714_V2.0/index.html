@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="高祥電信是領先的次世代通訊工程服務商，提供 5G、C-RAN 及 OneWeb 低軌道衛星解決方案。 / Gaushyang Telecom is a leading next-generation telecom engineering service provider, offering 5G, C-RAN, and OneWeb LEO satellite solutions.">
+    <title>高祥電信 | Gaushyang Telecom</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/gaushyang-logo.jpg" type="image/jpeg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <div class="waveform-container">
+                <div class="waveform-bar"></div>
+                <div class="waveform-bar"></div>
+                <div class="waveform-bar"></div>
+                <div class="waveform-bar"></div>
+                <div class="waveform-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <div class="top-bar-container">
+        <header class="main-header">
+            <nav class="navbar">
+                <a href="#" class="logo-link">
+                    <img src="images/gaushyang-logo.jpg" alt="Gaushyang Logo" class="logo">
+                    <span class="brand-name">Gaushyang</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#services">
+                        <span class="lang-zh">核心方案</span>
+                        <span class="lang-en">Services</span>
+                    </a></li>
+                    <li><a href="#products">
+                        <span class="lang-zh">工程實績</span>
+                        <span class="lang-en">Capabilities</span>
+                    </a></li>
+                    <li><a href="#about">
+                        <span class="lang-zh">關於高祥</span>
+                        <span class="lang-en">About</span>
+                    </a></li>
+                    <li><a href="#partners">
+                        <span class="lang-zh">合作夥伴</span>
+                        <span class="lang-en">Partners</span>
+                    </a></li>
+                    <li><a href="#contact" class="nav-cta">
+                        <span class="lang-zh">聯絡我們</span>
+                        <span class="lang-en">Contact Us</span>
+                    </a></li>
+                </ul>
+                <div class="lang-switch-container">
+                    <button id="lang-switch-btn" class="lang-switch-btn">EN</button>
+                </div>
+                <button class="hamburger" aria-label="Toggle navigation">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </nav>
+        </header>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-slideshow"></div> <div class="hero-overlay"></div>
+            <div class="hero-content fade-in">
+                <h1 class="hero-title">
+                    <span class="lang-zh">工程品質 • <span class="highlight">連結未來通訊</span></span>
+                    <span class="lang-en">Engineering the <br><span class="highlight">Future of Connectivity</span></span>
+                </h1>
+                <p class="hero-subtitle">
+                    <span class="lang-zh">5G 網路部署 • C-RAN 集中式架構 • OneWeb 低軌衛星解決方案</span>
+                    <span class="lang-en">5G Network • C-RAN Architecture • LEO Satellite Solutions</span>
+                </p>
+                <div class="hero-btns">
+                    <a href="#services" class="cta-button primary">
+                        <span class="lang-zh">探索解決方案</span>
+                        <span class="lang-en">Explore Solutions</span>
+                    </a>
+                    <a href="#contact" class="cta-button secondary">
+                        <span class="lang-zh">與我們聯絡</span>
+                        <span class="lang-en">Get in Touch</span>
+                    </a>
+                </div>
+            </div>
+            
+            <a href="#services" class="scroll-indicator">
+                <span>SCROLL</span>
+                <div class="scroll-line"></div>
+            </a>
+        </section>
+
+        <!-- 加分項目一：績效指標計數器 (Statistics Counter) -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item fade-in">
+                        <div class="stat-num" data-target="38">0</div>
+                        <div class="stat-label">
+                            <span class="lang-zh">年通訊深耕經驗</span>
+                            <span class="lang-en">Years of Telecom Experience</span>
+                        </div>
+                    </div>
+                    <div class="stat-item fade-in" style="transition-delay: 0.1s;">
+                        <div class="stat-num" data-target="10000" data-suffix="+">0</div>
+                        <div class="stat-label">
+                            <span class="lang-zh">全台基地台建置實績</span>
+                            <span class="lang-en">Base Stations Built</span>
+                        </div>
+                    </div>
+                    <div class="stat-item fade-in" style="transition-delay: 0.2s;">
+                        <div class="stat-num" data-target="99.9" data-suffix="%">0</div>
+                        <div class="stat-label">
+                            <span class="lang-zh">工程驗收合格率</span>
+                            <span class="lang-en">Quality Acceptance Rate</span>
+                        </div>
+                    </div>
+                    <div class="stat-item fade-in" style="transition-delay: 0.3s;">
+                        <div class="stat-num" data-target="100" data-suffix="%">0</div>
+                        <div class="stat-label">
+                            <span class="lang-zh">台澎金馬綠島全面覆蓋</span>
+                            <span class="lang-en">Full Coverage (Incl. Offshore Islands)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section-padding">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">
+                        <span class="lang-zh">核心解決方案</span>
+                        <span class="lang-en">Core Solutions</span>
+                    </h2>
+                    <p class="section-desc">
+                        <span class="lang-zh">以創新技術驅動連接，為您的基礎設施提供全方位的工程解決方案。</span>
+                        <span class="lang-en">Driving connectivity with innovative technology, providing comprehensive engineering solutions for your infrastructure.</span>
+                    </p>
+                </div>
+
+                <div class="services-grid-wnc">
+                    
+                    <a href="#contact" class="wnc-card fade-in">
+                        <div class="wnc-card-bg" style="background-image: url('background-image_2/ran-system-integration.jpg');"></div>
+                        <div class="wnc-card-overlay"></div>
+                        <div class="wnc-card-content">
+                            <h3 class="wnc-title">RAN Integration</h3>
+                            <p class="wnc-desc">
+                                <span class="lang-zh">無線接取網路系統整合，從基頻到射頻單元 (DUS/RRUS) 的專業安裝與設定，確保訊號最佳化。</span>
+                                <span class="lang-en">Radio Access Network system integration, from baseband to remote radio units (DUS/RRUS) expert installation and configuration to optimize signals.</span>
+                            </p>
+                            <div class="wnc-arrow">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#contact" class="wnc-card fade-in" style="transition-delay: 0.1s;">
+                        <div class="wnc-card-bg" style="background-image: url('background-image_2/5g-network-optimization.jpg');"></div>
+                        <div class="wnc-card-overlay"></div>
+                        <div class="wnc-card-content">
+                            <h3 class="wnc-title">5G Optimization</h3>
+                            <p class="wnc-desc">
+                                <span class="lang-zh">Massive MIMO 部署與 4G/5G 雙網優化工程，最大化頻譜效益與網絡覆蓋率。</span>
+                                <span class="lang-en">Massive MIMO deployment and 4G/5G dual-connectivity network optimization to maximize spectral efficiency and coverage.</span>
+                            </p>
+                            <div class="wnc-arrow">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#contact" class="wnc-card fade-in" style="transition-delay: 0.2s;">
+                        <div class="wnc-card-bg" style="background-image: url('background-image_2/indoor-coverage-solution.jpg');"></div>
+                        <div class="wnc-card-overlay"></div>
+                        <div class="wnc-card-content">
+                            <h3 class="wnc-title">Indoor Solutions</h3>
+                            <p class="wnc-desc">
+                                <span class="lang-zh">針對大型場館與商辦大樓，提供 Ericsson Radio Dot System 規劃，消除室內訊號死角。</span>
+                                <span class="lang-en">Ericsson Radio Dot System planning and deployment for stadiums and corporate buildings to eliminate indoor signal blind spots.</span>
+                            </p>
+                            <div class="wnc-arrow">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#contact" class="wnc-card fade-in" style="transition-delay: 0.3s;">
+                        <div class="wnc-card-bg" style="background-image: url('background-image_2/satellite-communication.jpg');"></div>
+                        <div class="wnc-card-overlay"></div>
+                        <div class="wnc-card-content">
+                            <h3 class="wnc-title">Satellite Communication</h3>
+                            <p class="wnc-desc">
+                                <span class="lang-zh">提供 OneWeb 低軌道衛星 U8 終端建置服務，為關鍵基礎設施打造高韌性的通訊備援鏈路。</span>
+                                <span class="lang-en">Providing OneWeb LEO satellite U8 terminal deployment to build highly resilient communication backup links for critical infrastructure.</span>
+                            </p>
+                            <div class="wnc-arrow">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#contact" class="wnc-card fade-in" style="transition-delay: 0.4s;">
+                        <div class="wnc-card-bg" style="background-image: url('background-image_2/c-ran-construction.jpg');"></div>
+                        <div class="wnc-card-overlay"></div>
+                        <div class="wnc-card-content">
+                            <h3 class="wnc-title">C-RAN Turnkey</h3>
+                            <p class="wnc-desc">
+                                <span class="lang-zh">集中化無線網路建置 (C-RAN) 解決方案，大幅降低維運成本並提升資源調度彈性。</span>
+                                <span class="lang-en">Centralized Radio Access Network (C-RAN) construction solutions, significantly lowering maintenance costs and improving resource flexibility.</span>
+                            </p>
+                            <div class="wnc-arrow">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Engineering Capabilities Section -->
+        <section id="products" class="section-padding bg-light">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">
+                        <span class="lang-zh">專業工程能力</span>
+                        <span class="lang-en">Engineering Capabilities</span>
+                    </h2>
+                </div>
+
+                <!-- Product 1 -->
+                <div class="product-item fade-in">
+                    <div class="product-text">
+                        <h3>
+                            <span class="lang-zh">4G/5G 基地台建設</span>
+                            <span class="lang-en">4G/5G Base Station Construction</span>
+                        </h3>
+                        <p>
+                            <span class="lang-zh">從站點勘查、結構簽證到設備安裝。我們擁有全台最豐富的 Nokia 與 Ericsson 設備安裝經驗，並嚴格遵守 ISO 45001 品質規範。</span>
+                            <span class="lang-en">From site survey, structural certification, to equipment installation. We hold extensive experience in Nokia and Ericsson equipment installation across Taiwan, adhering to ISO 45001 safety specifications.</span>
+                        </p>
+                        <ul class="tech-list">
+                            <li>Site Survey</li>
+                            <li>Structural Design</li>
+                            <li>Installation</li>
+                        </ul>
+                    </div>
+                    <div class="product-image" style="background-image: url('demo/建設.png');"></div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-item reverse fade-in">
+                    <div class="product-text">
+                        <h3>
+                            <span class="lang-zh">傳輸與系統整合</span>
+                            <span class="lang-en">Transmission & Integration</span>
+                        </h3>
+                        <p>
+                            <span class="lang-zh">光纖網路熔接、測試與傳輸設備整合。我們的工程團隊具備精密儀器操作能力，確保數據傳輸的高可靠性。</span>
+                            <span class="lang-en">Fiber optic splicing, testing, and transmission equipment integration. Our engineering team operates precision instruments to ensure ultra-high data reliability.</span>
+                        </p>
+                         <ul class="tech-list">
+                            <li>Fiber Optic</li>
+                            <li>Pressure Test</li>
+                            <li>System Integration</li>
+                        </ul>
+                    </div>
+                    <div class="product-image" style="background-image: url('demo/combiner.png');"></div>
+                </div>
+
+                <!-- Product 3 -->
+                 <div class="product-item fade-in">
+                    <div class="product-text">
+                        <h3>
+                            <span class="lang-zh">低軌衛星部署</span>
+                            <span class="lang-en">LEO Satellite Deployment</span>
+                        </h3>
+                        <p>
+                            <span class="lang-zh">作為 OneWeb 合作夥伴，我們提供偏遠地區與海上通訊的低軌道衛星終端建置服務。</span>
+                            <span class="lang-en">As a OneWeb partner, we provide low Earth orbit (LEO) satellite terminal deployment services for remote areas and maritime communication.</span>
+                        </p>
+                         <ul class="tech-list">
+                            <li>OneWeb UT</li>
+                            <li>Resilient Network</li>
+                            <li>Remote Access</li>
+                        </ul>
+                    </div>
+                    <div class="product-image" style="background-image: url('demo/oneweb.png');"></div>
+                </div>
+
+                <!-- Product 4 (ESG) -->
+                <div class="product-item reverse fade-in">
+                    <div class="product-text">
+                        <h3>
+                            <span class="lang-zh">ESG 永續與綠色工程</span>
+                            <span class="lang-en">ESG & Sustainability</span>
+                        </h3>
+                        <p>
+                            <span class="lang-zh">高祥電信積極響應全球氣候行動，致力於推動淨零排放轉型。我們制定了 1.5℃ 氣候雄心計畫，透過優化工程流程與綠色能源應用，降低通訊基礎設施的碳足跡。</span>
+                            <span class="lang-en">Gaushyang Telecom actively responds to global climate action and is committed to driving a net-zero transition. We established our 1.5°C Climate Ambition to minimize carbon footprints of telecom infrastructure through optimized engineering processes and green energy applications.</span>
+                        </p>
+                        <ul class="tech-list">
+                            <li>Net Zero 2050</li>
+                            <li>1.5°C Ambition</li>
+                            <li>Green Engineering</li>
+                        </ul>
+                        <a href="#" id="view-esg-btn" class="cta-button secondary small" style="margin-top: 20px;">
+                            <span class="lang-zh">預覽淨零排放計畫 (PDF)</span>
+                            <span class="lang-en">Preview Net-Zero Plan (PDF)</span>
+                        </a>
+                    </div>
+                    <div class="product-image" style="background-image: url('background-image/cape of good hope.png');"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section-padding">
+            <div class="container">
+                <div class="about-wrapper">
+                    <div class="about-main fade-in">
+                        <h2 class="section-title">
+                            <span class="lang-zh">關於高祥</span>
+                            <span class="lang-en">About Gaushyang</span>
+                        </h2>
+                        <p class="lead-text">
+                            <span class="lang-zh">連結現在與未來的通訊橋樑。</span>
+                            <span class="lang-en">Bridging Today and Tomorrow's Connectivity.</span>
+                        </p>
+                        <p>
+                            <span class="lang-zh">高祥電信工程成立於 1987 年，總部位於新北中工雲宇宙 AI 園區。我們是中華電信、遠傳電信的長期戰略合作夥伴。我們的工程足跡踏遍台灣本島、澎湖、金門、馬祖及綠島，具備極端地理環境下的施工與調度能力。</span>
+                            <span class="lang-en">Established in 1987, Gaushyang Telecom is headquartered in the BES Cloud Universe AI Park. As a strategic partner of major carriers, our engineering footprints cover Taiwan, Penghu, Kinmen, Matsu, and Green Island, demonstrating exceptional deployment capabilities in extreme environments.</span>
+                        </p>
+                        <p>
+                            <span class="lang-zh">面對 5G 與 B5G (Beyond 5G) 的挑戰，我們不僅持續深化傳統電信工程技術，更積極拓展低軌道衛星與企業專網領域，致力於成為亞太地區最受信賴的通訊整合專家。</span>
+                            <span class="lang-en">Facing the challenges of 5G and B5G (Beyond 5G), we continue to deepen traditional telecom engineering expertise while actively expanding into low Earth orbit (LEO) satellites and private enterprise networks, striving to be the most trusted connectivity integration expert in the Asia-Pacific.</span>
+                        </p>
+                        <a href="#" id="view-profile-btn" class="cta-button secondary small">
+                            <span class="lang-zh">查看公司簡報 (PDF)</span>
+                            <span class="lang-en">View Company Profile (PDF)</span>
+                        </a>
+                    </div>
+                    
+                    <div class="milestones fade-in">
+                        <h3 class="subsection-title">
+                            <span class="lang-zh">發展沿革</span>
+                            <span class="lang-en">History</span>
+                        </h3>
+                        <ul class="timeline">
+                          <li>
+                              <span class="year">1987</span>
+                              <p>
+                                  <span class="lang-zh">成立於高雄，開啟電信工程業務。</span>
+                                  <span class="lang-en">Established in Kaohsiung, launching telecom engineering business.</span>
+                              </p>
+                          </li>
+                          <li>
+                              <span class="year">2017</span>
+                              <p>
+                                  <span class="lang-zh">成立新北營運總部，擴大業務版圖。</span>
+                                  <span class="lang-en">Established New Taipei City operational headquarters, expanding business scope.</span>
+                              </p>
+                          </li>
+                          <li>
+                              <span class="year">2022</span>
+                              <p>
+                                  <span class="lang-zh">完成首座大型場館室內覆蓋專案。</span>
+                                  <span class="lang-en">Completed the first large-scale stadium indoor coverage project.</span>
+                              </p>
+                          </li>
+                          <li>
+                              <span class="year">2024</span>
+                              <p>
+                                  <span class="lang-zh">整合 OneWeb 衛星通訊業務。</span>
+                                  <span class="lang-en">Integrated OneWeb LEO satellite communication services.</span>
+                              </p>
+                          </li>
+                          <li>
+                              <span class="year">2025</span>
+                              <p>
+                                  <span class="lang-zh">取得 ISO 45001:2018 品質認證。</span>
+                                  <span class="lang-en">Obtained ISO 45001:2018 Occupational Health & Safety certification.</span>
+                              </p>
+                          </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partners Section -->
+        <section id="partners" class="section-padding bg-light text-center">
+            <div class="container">
+                <h2 class="section-title fade-in">
+                    <span class="lang-zh">合作夥伴</span>
+                    <span class="lang-en">Trusted Partners</span>
+                </h2>
+                <div class="partner-grid fade-in">
+                    <div class="partner-card">
+                        <img src="icon/Chunghwa_Telecom.svg.png" alt="Chunghwa Telecom">
+                    </div>
+                    <div class="partner-card">
+                        <img src="icon/FET.png" alt="FET">
+                    </div>
+                    <div class="partner-card">
+                        <img src="icon/ericsson.png" alt="Ericsson">
+                    </div>
+                    <div class="partner-card">
+                        <img src="icon/nokia.png" alt="Nokia">
+                    </div>
+                    <div class="partner-card">
+                        <img src="icon/oneWeb.png" alt="OneWeb">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 加分項目二：專業認證與安全標準牆 (Compliance & Certifications) -->
+        <section id="certifications" class="section-padding text-center">
+            <div class="container">
+                <div class="section-header fade-in" style="margin: 0 auto 60px auto;">
+                    <h2 class="section-title">
+                        <span class="lang-zh">專業認證與安全標準</span>
+                        <span class="lang-en">Compliance & Certifications</span>
+                    </h2>
+                    <p class="section-desc">
+                        <span class="lang-zh">嚴格遵守國際與國家級品質安衛標準，提供最值得信賴的工程保障。</span>
+                        <span class="lang-en">Adhering strictly to international quality and safety management standards to ensure engineering excellence.</span>
+                    </p>
+                </div>
+                <div class="cert-grid fade-in">
+                    <div class="cert-card">
+                        <div class="cert-icon-wrapper">
+                            <svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                <path d="M9 11l2 2 4-4"/>
+                            </svg>
+                        </div>
+                        <h3 class="cert-name">ISO 45001:2018</h3>
+                        <p class="cert-desc">
+                            <span class="lang-zh">職業安全衛生管理系統認證</span>
+                            <span class="lang-en">Occupational Health & Safety Management Certificate</span>
+                        </p>
+                    </div>
+                    <div class="cert-card" style="transition-delay: 0.1s;">
+                        <div class="cert-icon-wrapper">
+                            <svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                        </div>
+                        <h3 class="cert-name">Project Management</h3>
+                        <p class="cert-desc">
+                            <span class="lang-zh">卓越專案管理與調度能力</span>
+                            <span class="lang-en">Excellence in Project Dispatch & Management</span>
+                        </p>
+                    </div>
+                    <div class="cert-card" style="transition-delay: 0.2s;">
+                        <div class="cert-icon-wrapper">
+                            <svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                                <line x1="6" y1="6" x2="6.01" y2="6"/>
+                                <line x1="6" y1="18" x2="6.01" y2="18"/>
+                            </svg>
+                        </div>
+                        <h3 class="cert-name">NCC Certified</h3>
+                        <p class="cert-desc">
+                            <span class="lang-zh">資通訊設備專業工程資格</span>
+                            <span class="lang-en">Professional Telecom Equipment Qualification</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-padding contact-section">
+            <div class="container contact-wrapper">
+                <div class="contact-info fade-in">
+                    <h2 class="section-title">
+                        <span class="lang-zh">聯絡我們</span>
+                        <span class="lang-en">Get In Touch</span>
+                    </h2>
+                    <p>
+                        <span class="lang-zh">準備好升級您的網路基礎設施了嗎？</span>
+                        <span class="lang-en">Ready to upgrade your network infrastructure?</span>
+                    </p>
+                    <div class="info-item">
+                        <strong>HQ Location</strong>
+                        <p class="lang-zh">236 新北市土城區自強街28號</p>
+                        <p class="lang-en">No. 28, Ziqiang St., Tucheng Dist., New Taipei City 236</p>
+                    </div>
+                    <div class="info-item">
+                        <strong>Phone</strong>
+                        <p>02 2268 1177</p>
+                    </div>
+                    <div class="info-item">
+                        <strong>Email</strong>
+                        <p>service@gaushyang.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-form-wrapper fade-in">
+                    <form class="modern-form">
+                        <div class="form-group">
+                            <label for="name">
+                                <span class="lang-zh">姓名</span>
+                                <span class="lang-en">Name</span>
+                            </label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">
+                                <span class="lang-zh">電子信箱</span>
+                                <span class="lang-en">Email</span>
+                            </label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">
+                                <span class="lang-zh">聯絡訊息</span>
+                                <span class="lang-en">Message</span>
+                            </label>
+                          <textarea id="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button primary full-width">
+                            <span class="lang-zh">傳送訊息</span>
+                            <span class="lang-en">Send Message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Gaushyang Telecom Engineering Co., Ltd. All Rights Reserved.</p>
+            <p id="last-updated" style="font-size: 0.8em; color: #888; margin-top: 5px;">最後更新時間：正在載入...</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">↑</a>
+
+    <!-- PDF Viewer Modal -->
+    <div id="pdf-modal" class="pdf-modal">
+        <div class="pdf-modal-content">
+            <button id="pdf-close-btn" class="pdf-close-btn">×</button>
+            <div class="pdf-viewer-container">
+                <iframe id="pdf-iframe" src="" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- External Libraries & Scripts -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
