@@ -224,10 +224,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const lastUpdatedEl = document.getElementById('last-updated');
     if (lastUpdatedEl) {
         const now = new Date();
-        const formattedDate = now.toLocaleString('zh-TW', { 
+        formattedDate = now.toLocaleString('zh-TW', { 
             year: 'numeric', month: '2-digit', day: '2-digit', 
             hour: '2-digit', minute: '2-digit', second: '2-digit' 
         });
         lastUpdatedEl.textContent = `最後更新時間：${formattedDate}`;
-    }
-});
+        }
+
+        // 11. Hero Slogan Rotator Logic (標語自動切換翻轉)
+        const slogans = document.querySelectorAll('.slogan-item');
+        if (slogans.length > 0) {
+        let currentSloganIndex = 0;
+        const rotateSlogan = () => {
+            const currentSlogan = slogans[currentSloganIndex];
+
+            // 1. 將當前標語設為離開狀態 (向下隱藏)
+            currentSlogan.classList.remove('active');
+            currentSlogan.classList.add('exit');
+
+            // 2. 計算下一個標語索引
+            currentSloganIndex = (currentSloganIndex + 1) % slogans.length;
+            const nextSlogan = slogans[currentSloganIndex];
+
+            // 3. 將下一個標語設為進入狀態 (從上方滑入)
+            nextSlogan.classList.remove('exit');
+            nextSlogan.classList.add('active');
+
+            // 4. 等待動畫完成後，移除舊標語的 exit 類別，為下次循環做準備
+            setTimeout(() => {
+                currentSlogan.classList.remove('exit');
+            }, 800); // 此時間需與 CSS 中的 transition 0.8s 保持一致
+        };
+
+        // 設定自動切換間隔 (例如 4 秒)
+        setInterval(rotateSlogan, 4000);
+        }
+        });

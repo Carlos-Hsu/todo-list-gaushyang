@@ -74,7 +74,46 @@ html[lang="zh"] .lang-en { display: none !important; }
 .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(2, 12, 27, 0.7); z-index: -1; }
 .hero-content { max-width: 1000px; padding: 0 20px; z-index: 1; }
 .hero-title { font-size: clamp(2rem, 4.5vw, 4rem); font-weight: 700; line-height: 1.3; margin-bottom: 20px; color: var(--text-primary); }
-.hero-title .lang-zh { white-space: nowrap; }
+
+/* --- 4.0 Hero Slogan Rotator (標語 3D 翻牌動畫) --- */
+.slogan-rotator {
+    position: relative;
+    min-height: 2.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    perspective: 1000px; /* 建立 3D 空間透視感 */
+}
+
+.slogan-item {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transform: rotateX(90deg); /* 預設位置：從上方翻轉 90 度隱藏 */
+    transform-origin: center;
+    backface-visibility: hidden; /* 隱藏背面，確保翻轉時視覺乾淨 */
+    transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.1); /* 使用 Back-Out 曲線增加翻牌的 Q 彈感 */
+    pointer-events: none;
+}
+
+/* 當前顯示的標語：翻轉至正面 (0度) */
+.slogan-item.active {
+    opacity: 1;
+    transform: rotateX(0deg);
+    pointer-events: auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* 正在離開的標語：向前翻下隱藏 (-90度) */
+.slogan-item.exit {
+    opacity: 0;
+    transform: rotateX(-90deg);
+    position: absolute;
+    z-index: 1;
+}
+
 .hero-title .highlight { color: var(--accent-blue); }
 .hero-subtitle { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 40px; }
 .hero-btns { display: flex; gap: 20px; justify-content: center; }
@@ -159,15 +198,235 @@ html[lang="zh"] .lang-en { display: none !important; }
 .product-image { height: 300px; background-size: cover; background-position: center; border-radius: 6px; background-color: var(--card-bg); transition: var(--transition); background-blend-mode: overlay; background-color: rgba(2, 12, 27, 0.5); }
 .product-image:hover { background-blend-mode: normal; }
 
+/* About Section Layout */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* 文字欄較寬，圖片欄較窄 */
+    gap: 60px;
+    align-items: start; /* 讓內容頂部對齊 */
+}
+
+.about-image {
+    max-width: 400px; /* 限制圖片區塊最大寬度 */
+    margin: 0 auto;
+    position: relative;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: block; /* 避免底部出現多餘空白 */
+}
+
+/* 圖片定位浮水印標籤 - 參考 .cta-button.secondary 以確保設計一致性 */
+.image-watermark {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background: rgba(2, 12, 27, 0.75); /* 使用深海軍藍為底色並半透明 */
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid var(--text-primary); /* 一致的外框顏色 (偏白灰) */
+    color: var(--text-primary); /* 一致的文字顏色 (偏白灰) */
+    padding: 6px 14px;
+    border-radius: 4px; /* 一致的 4px 導角 */
+    font-size: 0.8rem;
+    font-weight: 600; /* 一致的字型粗細 */
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    z-index: 2;
+    pointer-events: none; /* 預設不擋住圖片點擊 */
+    transition: var(--transition);
+}
+
+.about-image:hover .image-watermark {
+    background: rgba(2, 12, 27, 0.9);
+    border-color: var(--accent); /* 懸停時與按鈕一致變為青色 */
+    color: var(--accent); /* 懸停時與按鈕一致變為青色 */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(100, 255, 218, 0.15);
+}
+
+.watermark-icon {
+    flex-shrink: 0;
+    stroke: currentColor; /* 自動跟隨文字顏色過渡 (var(--text-primary) -> var(--accent)) */
+    animation: bouncePin 2s infinite ease-in-out;
+}
+
+/* 定位圖示的微動態效果，讓網頁更生動 */
+@keyframes bouncePin {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-2px);
+    }
+}
+
+/* RWD: 當螢幕小於 768px 時，改為單欄 */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-image {
+        max-width: 100%;
+    }
+}
+
 /* --- 7. About & Timeline --- */
 .about-wrapper { display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; }
 .lead-text { font-size: 1.2rem; color: var(--accent); margin-bottom: 20px; }
 .about-main p { color: var(--text-secondary); margin-bottom: 15px; }
-.timeline { padding-left: 20px; border-left: 2px solid var(--bg-light); }
-.timeline li { position: relative; padding-left: 30px; margin-bottom: 30px; }
-.timeline li::before { content: ""; position: absolute; left: -9px; top: 5px; width: 16px; height: 16px; background: var(--bg-color); border: 2px solid var(--accent); border-radius: 50%; }
-.timeline .year { font-weight: 700; color: var(--text-primary); display: block; margin-bottom: 5px; }
-.timeline p { font-size: 0.9rem; color: var(--text-secondary); }
+/* --- 7. About & Orange Fashion Card Grid (時尚橘紙牌網格時間線) --- */
+.timeline {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 核心：一行最多 6 張，超過換行 */
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 40px 0 0 0;
+}
+
+.timeline li {
+    position: relative;
+    width: 100%; /* 由網格自動拉伸卡片寬度 */
+    list-style: none;
+}
+
+/* 紙牌式設計 (Card Style) - 使用曜石極深黑，與網頁的深海軍藍底形成對比，並搭配對比高亮橘 */
+.timeline-card {
+    background: #010813; /* 極深曜石黑，與網頁的深海軍藍 (#0a192f) 形成鮮明深淺與亮暗對比 */
+    border: 1px solid rgba(255, 110, 54, 0.2); /* 對比橘色亮邊框 */
+    border-top: 4px solid #ff5e36; /* 頂部高飽和愛馬仕橘時尚條 */
+    border-radius: 12px;
+    overflow: hidden;
+    height: 100%; /* 讓網格中的卡牌等高 */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* 更強烈的黑陰影，使卡片立體懸浮 */
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.timeline-card:hover {
+    transform: translateY(-10px) scale(1.02); /* 向上浮動並微幅放大，提昇層次 */
+    border-color: #ff9800; /* Hover 時邊框轉為明亮的黃橘對比色 */
+    background: #030d1a; /* Hover 時背景稍微透出微弱暖意 */
+    box-shadow: 0 20px 40px rgba(255, 94, 54, 0.3), 0 0 25px rgba(255, 208, 0, 0.15); /* 雙重霓虹發光（橘+金黃） */
+}
+
+/* 預留圖片插槽 (Image Slot) - 採用與主色冷藍對比的淡橘色微光背景 */
+.timeline-card-img-slot {
+    width: 100%;
+    height: 140px; /* 固定高度的插槽 */
+    background: rgba(255, 94, 54, 0.05); /* 溫暖的淡橘背景 */
+    border-bottom: 1px solid rgba(255, 94, 54, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 確保所有填入的圖片完整顯示且不被裁切 */
+.timeline-card-img-slot img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain !important; /* 強制使用 contain */
+    display: block;
+    margin: 0 auto;
+}
+
+/* 預留插槽內部的虛線相框樣式 */
+.img-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 110, 54, 0.45); /* 亮橘高亮 */
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    border: 1.5px dashed rgba(255, 110, 54, 0.3); /* 橘色虛線相框 */
+    border-radius: 8px;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.timeline-card:hover .img-placeholder {
+    color: #ffd000; /* Hover 時相框與文字轉為亮金色 */
+    border-color: rgba(255, 208, 0, 0.6);
+    background: rgba(255, 110, 54, 0.08);
+}
+
+.img-placeholder svg {
+    stroke: currentColor;
+    transition: var(--transition);
+}
+
+.timeline-card:hover .img-placeholder svg {
+    transform: scale(1.15) rotate(5deg); /* 時尚的小旋轉動態 */
+}
+
+/* 卡片主體內容 */
+.timeline-card-body {
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* 年份樣式：極致華麗的橘色到金色漸層，形成超強對比 */
+.timeline-card-body .year {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ff5e36 0%, #ffd000 100%); /* 愛馬仕橘至太陽金黃的華麗漸層 */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+    text-shadow: 0 0 10px rgba(255, 94, 54, 0.15); /* 漸層字體微發光 */
+}
+
+.timeline-card-body p {
+    font-size: 0.88rem;
+    color: #a0aec0; /* 比原 text-secondary 更加偏暖白灰，增加易讀性與亮暗對比 */
+    line-height: 1.6;
+}
+
+/* RWD: 當螢幕小於各個斷點時，自適應調整列數與間距 */
+@media (max-width: 1400px) {
+    .timeline {
+        grid-template-columns: repeat(4, 1fr); /* 螢幕小於 1400px，一行 4 個 */
+    }
+}
+
+@media (max-width: 992px) {
+    .timeline {
+        grid-template-columns: repeat(3, 1fr); /* 螢幕小於 992px，一行 3 個 */
+    }
+}
+
+@media (max-width: 768px) {
+    .timeline {
+        grid-template-columns: repeat(2, 1fr); /* 螢幕小於 768px，一行 2 個 */
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .timeline {
+        grid-template-columns: 1fr; /* 螢幕小於 480px，一行 1 個（單欄） */
+    }
+}
 
 /* --- 8. Partners (LinkedIn Style) --- */
 .partner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 30px; margin-top: 50px; justify-items: center; }
