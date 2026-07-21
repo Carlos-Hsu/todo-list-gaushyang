@@ -25,7 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) entry.target.classList.add('visible');
         });
     }, observerOptions);
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    // 同時觀察 fade-in 與 timeline-item
+    document.querySelectorAll('.fade-in, .timeline-item').forEach(el => observer.observe(el));
 
     // 4. Hero Background Slideshow (自動化讀取)
     const heroSlideContainer = document.querySelector('.hero-slideshow');
