@@ -371,13 +371,26 @@ html[lang="zh"] .lang-en { display: none !important; }
 .timeline-content .year { font-weight: 700; color: var(--accent); display: block; margin-bottom: 5px; }
 .timeline-content p { font-size: 0.95rem; color: var(--text-secondary); }
 
+.timeline-images-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 預設改為單欄，確保圖片寬度足夠 */
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* 針對桌面版，若空間足夠則嘗試水平排列，否則維持單欄 */
+@media (min-width: 900px) {
+    .timeline-images-grid {
+        grid-template-columns: repeat(2, 1fr); /* 桌面版若有多張圖片則兩欄並排 */
+    }
+}
+
 .timeline-image {
-    margin-top: 20px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 5px 20px rgba(0,0,0,0.4);
 }
-.timeline-image img { width: 100%; height: auto; display: block; }
+.timeline-image img { width: 100%; height: auto; object-fit: contain; display: block; }
 
 /* RWD: 手機版適配 */
 @media (max-width: 768px) {
