@@ -283,10 +283,9 @@ html[lang="zh"] .lang-en { display: none !important; }
 /* --- 7. Timeline (Professional Upgraded) --- */
 .timeline-container {
     position: relative;
-    width: 100%;
-    max-width: 1800px; /* 最大 1800px，但在更小螢幕會自動縮小 */
+    max-width: 800px; /* 限制寬度讓內容更集中 */
     margin: 60px auto;
-    padding: 40px 0;
+    padding: 20px 0;
 }
 
 /* 中央垂直直線 */
@@ -295,110 +294,77 @@ html[lang="zh"] .lang-en { display: none !important; }
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 50%;
+    left: 29px; /* 定位在節點中心 */
     width: 3px;
-    background: #2a3d60; /* 統一的品牌深藍灰 */
-    margin-left: -1.5px;
+    background: #2a3d60;
     border-radius: 2px;
 }
 
-/* 年代區間 marker */
-.decade-marker {
-    text-align: center;
-    margin: 60px 0;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.decade-marker span {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--accent-blue);
-    background: var(--bg-color);
-    padding: 0 20px;
-    z-index: 2;
-}
-
-/* 事件內容區塊 (Flex 容器) */
 .timeline-item {
     position: relative;
-    margin-bottom: 60px;
-    width: 50%;
-    padding: 0 40px;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-bottom: 40px;
+    padding-left: 70px; /* 留出空間給左側的點與線 */
 }
-.timeline-item.visible { opacity: 1; transform: translateY(0); }
-.timeline-item.left { left: 0; text-align: right; }
-.timeline-item.right { left: 50%; text-align: left; }
-
-/* 節點圓圈 (Dot) - Git 風格 */
+/* 節點圓圈 */
 .timeline-node {
     position: absolute;
-    top: 50%;
+    top: 25px; /* 依據內容頂部微調 */
+    left: 20px;
     width: 20px;
     height: 20px;
     background: var(--bg-color);
-    border: 4px solid var(--accent); /* Commit node 外環 */
+    border: 4px solid var(--accent);
     border-radius: 50%;
-    z-index: 3;
-    transform: translateY(-50%);
+    z-index: 2;
     box-shadow: 0 0 0 4px rgba(100, 255, 218, 0.2); /* 外層光暈效果 */
 }
 
-/* Git 連接線效果 (延伸至內容區塊) */
-.timeline-item::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 20px; /* 縮短長度 */
-    height: 3px;
-    background: var(--accent);
-    z-index: 1;
+/* Decade Marker - Refined Glassmorphism Style */
+.decade-marker {
+    margin: 60px auto 30px auto; /* 上 下 margin 自動居中 */
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+    
+    /* 玻璃擬態背景 */
+    background: rgba(17, 34, 64, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* 細緻邊框 */
+    border: 1px solid rgba(100, 255, 218, 0.3);
+    border-radius: 8px;
+    
+    display: block; /* 改為區塊元素以進行居中 */
+    width: fit-content; /* 寬度根據內容調整 */
+    padding: 10px 30px;
+    
+    /* 柔和投影 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.timeline-item.left::after { right: 10px; } 
-.timeline-item.right::after { left: 10px; }
-
-/* 節點圓圈 (Dot) - Git 風格 */
-.timeline-node {
-    position: absolute;
-    top: 50%;
-    width: 20px;
-    height: 20px;
-    background: var(--bg-color);
-    border: 4px solid var(--accent); /* Commit node 外環 */
-    border-radius: 50%;
-    z-index: 3;
-    transform: translateY(-50%);
-    box-shadow: 0 0 0 4px rgba(100, 255, 218, 0.2);
+.decade-marker:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.2);
+    color: var(--accent);
+    transform: translateY(-2px);
 }
-
-/* 確保連線穿過節點，延伸到內容邊緣 */
-.timeline-item.left .timeline-node { right: -10px; }
-.timeline-item.right .timeline-node { left: -10px; }
 
 .timeline-content {
     background: transparent;
-    padding: 0; /* padding 歸零 */
+    padding: 0;
     border-radius: 25px;
     border: none;
     transition: var(--transition);
     position: relative;
-    /* 透過負邊距讓內容區更靠近節點 */
 }
-.timeline-item.left .timeline-content { margin-right: -10px; }
-.timeline-item.right .timeline-content { margin-left: -10px; }
 
 /* 懸停時強調連接感 */
 .timeline-item:hover .timeline-node {
-    transform: translateY(-50%) scale(1.3);
+    transform: scale(1.3);
     background: var(--accent);
-}
-.timeline-item:hover .timeline-content {
-    box-shadow: none;
 }
 
 .timeline-content h3 { font-size: 1.2rem; color: #fff; margin-bottom: 0px; }
@@ -425,39 +391,21 @@ html[lang="zh"] .lang-en { display: none !important; }
     overflow: hidden;
     box-shadow: 0 5px 20px rgba(0,0,0,0.4);
     transition: var(--transition);
-    transform: scale(0.6); /* 更加縮小 */
     margin-top: 10px;
-}
-
-/* 左側項目：圖片靠右對齊 (靠近時間線) */
-.timeline-item.left .timeline-image {
-    margin-left: auto;
-    transform-origin: right center;
-}
-
-/* 右側項目：圖片靠左對齊 (靠近時間線) */
-.timeline-item.right .timeline-image {
-    margin-right: auto;
-    transform-origin: left center;
-}
-
-.timeline-item:hover .timeline-image {
-    transform: scale(1); /* 懸停時恢復原大小 */
+    max-width: 300px; /* 限制最大寬度 */
 }
 
 .timeline-image img { 
     width: 100%; 
     height: auto; 
-    object-fit: contain; 
+    max-height: 200px; /* 限制最大高度 */
+    object-fit: cover; /* 確保比例正常，視情況可改為 contain */
     display: block; 
 }
 
 /* RWD: 手機版適配 */
 @media (max-width: 768px) {
-    .timeline-container::before { left: 30px; margin-left: 0; }
-    .timeline-item { width: 100%; padding-left: 70px; padding-right: 20px; text-align: left; }
-    .timeline-item.left, .timeline-item.right { left: 0; }
-    .timeline-node { left: 20px; }
+    .timeline-container::before { left: 30px; }
 }
 
 /* 雙連接線效果 (分支) */
@@ -613,7 +561,7 @@ footer { text-align: center; padding: 30px 0; color: var(--text-secondary); font
     .contact-section::before { opacity: 0.95; } /* 手機版加強遮罩 */
 }
 
-.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 40px; height: 40px; background: var(--card-bg); color: var(--accent); border: 1px solid var(--accent); display: flex; justify-content: center; align-items: center; border-radius: 4px; opacity: 0; transition: var(--transition); z-index: 90; }
+.back-to-top { position: fixed; bottom: 30px; right: 20px; width: 40px; height: 40px; background: var(--card-bg); color: var(--accent); border: 1px solid var(--accent); display: flex; justify-content: center; align-items: center; border-radius: 4px; opacity: 0; transition: var(--transition); z-index: 1000; }
 .back-to-top.visible { opacity: 1; }
 
 .pdf-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
