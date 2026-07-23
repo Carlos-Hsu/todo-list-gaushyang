@@ -348,43 +348,63 @@ html[lang="zh"] .lang-en { display: none !important; }
     box-shadow: 0 0 0 4px rgba(100, 255, 218, 0.2); /* 外層光暈效果 */
 }
 
-/* Git 連接線效果 */
+/* Git 連接線效果 (延伸至內容區塊) */
 .timeline-item::after {
     content: '';
     position: absolute;
     top: 50%;
-    width: 40px;
+    width: 20px; /* 縮短長度 */
     height: 3px;
     background: var(--accent);
     z-index: 1;
 }
 
-.timeline-item.left::after { right: 0; }
-.timeline-item.right::after { left: 0; }
+.timeline-item.left::after { right: 10px; } 
+.timeline-item.right::after { left: 10px; }
+
+/* 節點圓圈 (Dot) - Git 風格 */
+.timeline-node {
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background: var(--bg-color);
+    border: 4px solid var(--accent); /* Commit node 外環 */
+    border-radius: 50%;
+    z-index: 3;
+    transform: translateY(-50%);
+    box-shadow: 0 0 0 4px rgba(100, 255, 218, 0.2);
+}
+
+/* 確保連線穿過節點，延伸到內容邊緣 */
 .timeline-item.left .timeline-node { right: -10px; }
 .timeline-item.right .timeline-node { left: -10px; }
 
-/* 靜態樣式：無 Hover 特效 */
+.timeline-content {
+    background: transparent;
+    padding: 0; /* padding 歸零 */
+    border-radius: 25px;
+    border: none;
+    transition: var(--transition);
+    position: relative;
+    /* 透過負邊距讓內容區更靠近節點 */
+}
+.timeline-item.left .timeline-content { margin-right: -10px; }
+.timeline-item.right .timeline-content { margin-left: -10px; }
+
+/* 懸停時強調連接感 */
 .timeline-item:hover .timeline-node {
-    transform: translateY(-50%) scale(1.2); /* 懸停時略微放大 */
+    transform: translateY(-50%) scale(1.3);
     background: var(--accent);
 }
 .timeline-item:hover .timeline-content {
-    transform: none;
-    border-color: rgba(255, 255, 255, 0.05);
+    box-shadow: none;
 }
 
-.timeline-content {
-    background: var(--card-bg);
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: var(--transition);
-}
-
-.timeline-content h3 { font-size: 1.3rem; color: #fff; margin-bottom: 5px; }
-.timeline-content .year { font-weight: 700; color: var(--accent); display: block; margin-bottom: 5px; }
-.timeline-content p { font-size: 0.95rem; color: var(--text-secondary); }
+.timeline-content h3 { font-size: 1.2rem; color: #fff; margin-bottom: 0px; }
+.timeline-content .year { font-weight: 700; color: var(--accent); display: block; margin-bottom: 0px; }
+.timeline-content p { font-size: 0.9rem; color: var(--text-secondary); margin: 0; }
+.timeline-content .timeline-image { margin-top: 5px; }
 
 .timeline-images-grid {
     display: grid;
@@ -404,8 +424,33 @@ html[lang="zh"] .lang-en { display: none !important; }
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    transition: var(--transition);
+    transform: scale(0.6); /* 更加縮小 */
+    margin-top: 10px;
 }
-.timeline-image img { width: 100%; height: auto; object-fit: contain; display: block; }
+
+/* 左側項目：圖片靠右對齊 (靠近時間線) */
+.timeline-item.left .timeline-image {
+    margin-left: auto;
+    transform-origin: right center;
+}
+
+/* 右側項目：圖片靠左對齊 (靠近時間線) */
+.timeline-item.right .timeline-image {
+    margin-right: auto;
+    transform-origin: left center;
+}
+
+.timeline-item:hover .timeline-image {
+    transform: scale(1); /* 懸停時恢復原大小 */
+}
+
+.timeline-image img { 
+    width: 100%; 
+    height: auto; 
+    object-fit: contain; 
+    display: block; 
+}
 
 /* RWD: 手機版適配 */
 @media (max-width: 768px) {
@@ -415,12 +460,34 @@ html[lang="zh"] .lang-en { display: none !important; }
     .timeline-node { left: 20px; }
 }
 
-/* --- 8. Partners (LinkedIn Style) --- */
-.partner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 30px; margin-top: 50px; justify-items: center; }
-.partner-card { background: #ffffff; width: 100%; max-width: 180px; height: 120px; border-radius: 8px; display: flex; align-items: center; justify-content: center; padding: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); border: 1px solid rgba(0, 0, 0, 0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-.partner-card img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; filter: grayscale(100%) opacity(0.7); transition: filter 0.3s ease; }
-.partner-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); }
-.partner-card:hover img { filter: grayscale(0%) opacity(1); }
+/* 雙連接線效果 (分支) */
+.timeline-container.has-branch::before {
+    left: 45%; /* 主線向左移 */
+}
+.timeline-branch-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 55%; /* 分支線 */
+    width: 3px;
+    background: #2a3d60;
+    margin-left: -1.5px;
+    border-radius: 2px;
+}
+
+/* 分支節點 */
+.branch-node {
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background: var(--bg-color);
+    border: 4px solid var(--accent-blue); /* 分支用不同的顏色或樣式，這裡先用藍色 */
+    border-radius: 50%;
+    z-index: 3;
+    transform: translateY(-50%);
+    box-shadow: 0 0 0 4px rgba(0, 163, 224, 0.2);
+}
 
 /* --- 8.1 Compliance & Certifications Section (加分項目二) --- */
 .cert-grid {
