@@ -283,7 +283,8 @@ html[lang="zh"] .lang-en { display: none !important; }
 /* --- 7. Timeline (Professional Upgraded) --- */
 .timeline-container {
     position: relative;
-    max-width: 900px;
+    width: 100%;
+    max-width: 1800px; /* 最大 1800px，但在更小螢幕會自動縮小 */
     margin: 60px auto;
     padding: 40px 0;
 }
@@ -333,30 +334,44 @@ html[lang="zh"] .lang-en { display: none !important; }
 .timeline-item.left { left: 0; text-align: right; }
 .timeline-item.right { left: 50%; text-align: left; }
 
-/* 節點圓圈 (Dot) */
+/* 節點圓圈 (Dot) - Git 風格 */
 .timeline-node {
     position: absolute;
-    top: 5px;
+    top: 50%;
     width: 20px;
     height: 20px;
     background: var(--bg-color);
-    border: 3px solid var(--accent); /* 青色邊框 */
+    border: 4px solid var(--accent); /* Commit node 外環 */
     border-radius: 50%;
     z-index: 3;
-    transition: var(--transition);
+    transform: translateY(-50%);
+    box-shadow: 0 0 0 4px rgba(100, 255, 218, 0.2); /* 外層光暈效果 */
 }
+
+/* Git 連接線效果 */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 3px;
+    background: var(--accent);
+    z-index: 1;
+}
+
+.timeline-item.left::after { right: 0; }
+.timeline-item.right::after { left: 0; }
 .timeline-item.left .timeline-node { right: -10px; }
 .timeline-item.right .timeline-node { left: -10px; }
 
-/* Hover 效果 */
+/* 靜態樣式：無 Hover 特效 */
 .timeline-item:hover .timeline-node {
-    transform: scale(1.5);
+    transform: translateY(-50%) scale(1.2); /* 懸停時略微放大 */
     background: var(--accent);
-    box-shadow: 0 0 15px var(--accent);
 }
 .timeline-item:hover .timeline-content {
-    transform: translateY(-5px);
-    border-color: var(--accent);
+    transform: none;
+    border-color: rgba(255, 255, 255, 0.05);
 }
 
 .timeline-content {
