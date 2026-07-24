@@ -188,6 +188,47 @@ html[lang="zh"] .lang-en { display: none !important; }
 .wnc-card:hover .wnc-desc { max-height: 150px; opacity: 1; transform: translateY(0); }
 .wnc-card:hover .wnc-arrow { background: #fff; color: var(--accent-blue); transform: translateX(10px); }
 
+/* --- 5.5 Trusted Partners Section --- */
+.partner-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+    justify-items: center;
+    align-items: center;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.partner-card {
+    background: #ffffff; /* 使用純白背景 */
+    width: 100%;
+    height: 120px;
+    border-radius: 8px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px; /* 增加內邊距 */
+    transition: var(--transition);
+}
+
+.partner-card img {
+    max-width: 90%; 
+    max-height: 90%;
+    object-fit: contain;
+    filter: none; /* 移除額外濾鏡 */
+    opacity: 1; 
+    transition: var(--transition);
+}
+
+.partner-card:hover {
+    background: #ffffff;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
 /* --- 6. Products --- */
 .product-item { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; margin-bottom: 80px; }
 .product-item.reverse .product-text { order: 2; }
@@ -319,53 +360,19 @@ html[lang="zh"] .lang-en { display: none !important; }
     box-shadow: 0 0 0 4px rgba(100, 255, 218, 0.2); /* 外層光暈效果 */
 }
 
-/* Decade Marker - Refined Glassmorphism Style */
-.decade-marker {
-    margin: 60px auto 30px auto; /* 上 下 margin 自動居中 */
-    font-weight: 700;
-    font-size: 1.1rem;
-    letter-spacing: 2px;
-    color: var(--text-primary);
-    
-    /* 玻璃擬態背景 */
-    background: rgba(17, 34, 64, 0.7);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    
-    /* 細緻邊框 */
-    border: 1px solid rgba(100, 255, 218, 0.3);
-    border-radius: 8px;
-    
-    display: block; /* 改為區塊元素以進行居中 */
-    width: fit-content; /* 寬度根據內容調整 */
-    padding: 10px 30px;
-    
-    /* 柔和投影 */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.decade-marker:hover {
-    border-color: var(--accent);
-    box-shadow: 0 0 20px rgba(100, 255, 218, 0.2);
-    color: var(--accent);
-    transform: translateY(-2px);
-}
-
+/* Timeline Card - GitHub Style (Refactored to .timeline-content) */
 .timeline-content {
-    background: transparent;
-    padding: 0;
-    border-radius: 25px;
-    border: none;
-    transition: var(--transition);
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px;
+    padding: 20px;
     position: relative;
+    transition: var(--transition);
 }
 
-/* 懸停時強調連接感 */
-.timeline-item:hover .timeline-node {
-    transform: scale(1.3);
-    background: var(--accent);
-}
+/* 移除 ::before 特效箭頭 */
+
+/* 移除懸停特效 */
 
 .timeline-content h3 { font-size: 1.2rem; color: #fff; margin-bottom: 0px; }
 .timeline-content .year { font-weight: 700; color: var(--accent); display: block; margin-bottom: 0px; }

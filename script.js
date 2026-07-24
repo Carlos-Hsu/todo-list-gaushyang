@@ -145,22 +145,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // 初始化語言：優先讀取暫存，其次使用瀏覽器預設語系（若為英文則預設為 en，否則預設為 zh）
+    // 強制重置：若需徹底預設為英文，請取消註解下面這行，或手動清除瀏覽器快取
+    // localStorage.removeItem('gaushyang_lang'); 
+
+    // 初始化語言：優先讀取暫存，其次強制預設為英文 ('en')
     const savedLang = localStorage.getItem('gaushyang_lang');
-    if (savedLang) {
-        setLanguage(savedLang);
+    if (savedLang === 'zh') {
+        setLanguage('zh');
     } else {
-        const browserLang = navigator.language || navigator.userLanguage;
-        if (browserLang.startsWith('en')) {
-            setLanguage('en');
-        } else {
-            setLanguage('zh');
-        }
+        setLanguage('en');
     }
 
     if (langSwitchBtn) {
         langSwitchBtn.addEventListener('click', () => {
-            const currentLang = document.documentElement.getAttribute('lang') || 'zh';
+            const currentLang = document.documentElement.getAttribute('lang') || 'en';
             const nextLang = currentLang === 'zh' ? 'en' : 'zh';
             setLanguage(nextLang);
         });
