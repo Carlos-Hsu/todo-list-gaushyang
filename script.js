@@ -2,7 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Preloader
     const preloader = document.querySelector('.preloader');
     window.addEventListener('load', () => {
-        setTimeout(() => { preloader.classList.add('hidden'); }, 800);
+        if (preloader) {
+            preloader.classList.add('hidden');
+        }
     });
 
     // 2. Lenis Smooth Scroll
@@ -82,10 +84,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 6. Back to Top
     const backToTop = document.querySelector('.back-to-top');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) backToTop.classList.add('visible');
-        else backToTop.classList.remove('visible');
-    });
+    if (backToTop) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) backToTop.classList.add('visible');
+            else backToTop.classList.remove('visible');
+        });
+    }
     
     // 7. PDF Modal
     const viewPdfBtn = document.getElementById('view-profile-btn');
@@ -97,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const profileUrl = 'Company Profile 20251106.pdf';
     const esgUrl = 'net-zero-plan/1.5C_Climate_Ambition.pdf';
 
-    if (pdfModal) {
+    if (pdfModal && closePdfBtn && pdfIframe) {
         const openModal = (url) => {
             pdfIframe.src = url;
             pdfModal.style.display = 'flex';
@@ -135,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 8. Multi-language Switching Logic (加分項目二)
+    // 8. Multi-language Switching Logic
     const langSwitchBtn = document.getElementById('lang-switch-btn');
     const setLanguage = (lang) => {
         document.documentElement.setAttribute('lang', lang);
@@ -145,15 +149,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // 強制重置：若需徹底預設為英文，請取消註解下面這行，或手動清除瀏覽器快取
-    // localStorage.removeItem('gaushyang_lang'); 
-
-    // 初始化語言：優先讀取暫存，其次強制預設為英文 ('en')
+    // 初始化語言：優先讀取暫存，其次偵測瀏覽器語言，預設為英文
     const savedLang = localStorage.getItem('gaushyang_lang');
-    if (savedLang === 'zh') {
-        setLanguage('zh');
+    if (savedLang) {
+        setLanguage(savedLang);
     } else {
-        setLanguage('en');
+        const browserLang = navigator.language || navigator.userLanguage;
+        setLanguage(browserLang.startsWith('zh') ? 'zh' : 'en');
     }
 
     if (langSwitchBtn) {
