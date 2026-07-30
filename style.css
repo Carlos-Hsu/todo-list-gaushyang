@@ -359,14 +359,18 @@ html[lang="zh"] .lang-en { display: none !important; }
     box-shadow: 0 0 0 4px rgba(100, 255, 218, 0.2); /* 外層光暈效果 */
 }
 
-/* Timeline Card - GitHub Style (Refactored to .timeline-content) */
-.timeline-content {
-    background: transparent !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 8px;
-    padding: 20px;
-    position: relative;
-    transition: var(--transition);
+/* 年代標籤定義 (Industrial Vintage Style - Simplified) */
+.decade-marker {
+    display: block;
+    text-align: center; /* 文字置中 */
+    margin: 50px auto 20px auto; /* 自動外邊距置中 */
+    padding: 8px 16px;
+    background-color: var(--card-bg);
+    border-radius: 4px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent);
+    max-width: 200px; /* 限制寬度讓置中效果更明確 */
 }
 
 /* 移除 ::before 特效箭頭 */
