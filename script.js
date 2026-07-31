@@ -377,12 +377,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const progress = ((index / nodeCount) + ((time * 0.000025) % 1)) % 1;
                 const x = progress * width;
                 const y = height * 0.52 + Math.sin(progress * Math.PI * 4 + time * 0.00055) * height * 0.13;
-                const radius = 1.5 + Math.sin(time * 0.002 + index) * 0.6;
+                const radius = 2.2 + Math.sin(time * 0.002 + index) * 0.75;
                 context.beginPath();
                 context.arc(x, y, radius, 0, Math.PI * 2);
-                context.fillStyle = 'rgba(100, 255, 218, 0.72)';
+                context.fillStyle = 'rgba(100, 255, 218, 0.95)';
                 context.shadowColor = '#64ffda';
-                context.shadowBlur = 12;
+                context.shadowBlur = 18;
                 context.fill();
             }
         };
@@ -393,9 +393,9 @@ document.addEventListener('DOMContentLoaded', () => {
             context.clearRect(0, 0, width, height);
             context.globalCompositeOperation = 'lighter';
 
-            drawSignalWave(time, { y: 0.38, amplitude: height * 0.11, frequency: 0.010, speed: 0.0012, lineWidth: 1.2, color: 'rgba(0, 163, 224, 0.48)', glow: '#00a3e0', blur: 14 });
-            drawSignalWave(time, { y: 0.52, amplitude: height * 0.17, frequency: 0.014, speed: -0.0010, lineWidth: 1.8, color: 'rgba(100, 255, 218, 0.52)', glow: '#64ffda', blur: 18 });
-            drawSignalWave(time, { y: 0.66, amplitude: height * 0.09, frequency: 0.019, speed: 0.00075, lineWidth: 0.9, color: 'rgba(72, 122, 255, 0.38)', glow: '#487aff', blur: 12 });
+            drawSignalWave(time, { y: 0.36, amplitude: height * 0.13, frequency: 0.010, speed: 0.0012, lineWidth: 1.8, color: 'rgba(0, 183, 255, 0.76)', glow: '#00b7ff', blur: 20 });
+            drawSignalWave(time, { y: 0.52, amplitude: height * 0.2, frequency: 0.014, speed: -0.0010, lineWidth: 2.6, color: 'rgba(100, 255, 218, 0.84)', glow: '#64ffda', blur: 28 });
+            drawSignalWave(time, { y: 0.68, amplitude: height * 0.11, frequency: 0.019, speed: 0.00075, lineWidth: 1.5, color: 'rgba(91, 137, 255, 0.68)', glow: '#5b89ff', blur: 20 });
             drawNodes(time);
 
             context.globalCompositeOperation = 'source-over';

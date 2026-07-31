@@ -753,70 +753,53 @@
                 </div>
                 
                 <div class="contact-form-wrapper fade-in">
-                    <form class="modern-form" name="project-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <div class="help-entry-header">
+                        <p class="help-entry-eyebrow">LET'S CONNECT</p>
+                        <h2>
+                            <span class="lang-zh">我們能如何幫助您？</span>
+                            <span class="lang-en">How can we help?</span>
+                        </h2>
+                        <p>
+                            <span class="lang-zh">描述您的通訊工程需求，我們將協助您找到合適的解決方案。</span>
+                            <span class="lang-en">Tell us about your telecom engineering needs, and we will help identify the right solution.</span>
+                        </p>
+                    </div>
+                    <form class="modern-form help-entry-form" name="project-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field">
                         <input type="hidden" name="form-name" value="project-inquiry">
                         <p class="form-honeypot" aria-hidden="true">
                             <label>請勿填寫此欄位 <input name="bot-field" tabindex="-1" autocomplete="off"></label>
                         </p>
-                        <div class="form-group">
-                            <label for="name">
-                                <span class="lang-zh">姓名</span>
-                                <span class="lang-en">Name</span>
-                            </label>
-                            <input type="text" id="name" name="name" autocomplete="name" required>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="company">
-                                    <span class="lang-zh">公司名稱</span>
-                                    <span class="lang-en">Company</span>
-                                </label>
-                                <input type="text" id="company" name="company" autocomplete="organization">
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">
-                                    <span class="lang-zh">聯絡電話</span>
-                                    <span class="lang-en">Phone</span>
-                                </label>
-                                <input type="tel" id="phone" name="phone" autocomplete="tel">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">
-                                <span class="lang-zh">電子信箱</span>
-                                <span class="lang-en">Email</span>
-                            </label>
-                            <input type="email" id="email" name="email" autocomplete="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="service">
+                        <div class="help-query-field">
+                            <label class="sr-only" for="service">
                                 <span class="lang-zh">服務需求</span>
                                 <span class="lang-en">Service needed</span>
                             </label>
                             <select id="service" name="service" required>
-                                <option value="" data-zh="請選擇" data-en="Select a service" selected disabled>請選擇</option>
-                                <option value="基地台建設" data-zh="基地台建設" data-en="Base station construction">基地台建設</option>
-                                <option value="維護與障礙排除" data-zh="維護與障礙排除" data-en="Maintenance and fault recovery">維護與障礙排除</option>
-                                <option value="網路優化" data-zh="網路優化" data-en="Network optimization">網路優化</option>
-                                <option value="室內涵蓋" data-zh="室內涵蓋" data-en="Indoor coverage">室內涵蓋</option>
-                                <option value="衛星通訊" data-zh="衛星通訊" data-en="Satellite communication">衛星通訊</option>
-                                <option value="其他" data-zh="其他" data-en="Other">其他</option>
+                                <option value="" data-zh="請選擇需要的服務" data-en="Select a service" selected disabled>請選擇需要的服務</option>
+                                <option value="4G/5G 基地台建設" data-zh="4G／5G 基地台建設" data-en="4G/5G base station construction">4G／5G 基地台建設</option>
+                                <option value="C-RAN Turnkey 建置" data-zh="C-RAN Turnkey 建置" data-en="C-RAN turnkey deployment">C-RAN Turnkey 建置</option>
+                                <option value="RAN 系統整合" data-zh="RAN 無線接取網路系統整合" data-en="RAN system integration">RAN 無線接取網路系統整合</option>
+                                <option value="網路優化" data-zh="4G／5G 網路優化" data-en="4G/5G network optimization">4G／5G 網路優化</option>
+                                <option value="室內訊號涵蓋" data-zh="室內訊號涵蓋解決方案" data-en="Indoor coverage solutions">室內訊號涵蓋解決方案</option>
+                                <option value="低軌衛星通訊" data-zh="OneWeb 低軌衛星通訊建置" data-en="OneWeb LEO satellite deployment">OneWeb 低軌衛星通訊建置</option>
+                                <option value="無線訊號路測" data-zh="無線訊號路測與量測" data-en="Wireless signal testing and measurement">無線訊號路測與量測</option>
+                                <option value="維護與障礙排除" data-zh="基地台維護與障礙排除" data-en="Base station maintenance and fault recovery">基地台維護與障礙排除</option>
+                                <option value="其他客製化服務" data-zh="其他客製化服務" data-en="Other customized services">其他客製化服務</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="message">
-                                <span class="lang-zh">聯絡訊息</span>
-                                <span class="lang-en">Message</span>
-                            </label>
-                          <textarea id="message" name="message" rows="5" data-placeholder-zh="請簡述地點、工程範圍與預計時程" data-placeholder-en="Please describe the location, scope of work, and expected schedule" placeholder="請簡述地點、工程範圍與預計時程" required></textarea>
-                        </div>
-                        <button type="submit" class="cta-button primary full-width">
-                            <span class="lang-zh">傳送訊息</span>
-                            <span class="lang-en">Send Message</span>
+                        <label class="sr-only" for="email">
+                            <span class="lang-zh">電子信箱</span>
+                            <span class="lang-en">Email</span>
+                        </label>
+                        <input class="help-email-input" type="email" id="email" name="email" autocomplete="email" data-placeholder-zh="您的 Email，方便我們回覆" data-placeholder-en="Your email, so we can reply" placeholder="您的 Email，方便我們回覆" required>
+                        <button type="submit" class="help-submit-button">
+                            <span class="lang-zh">送出需求</span>
+                            <span class="lang-en">Send inquiry</span>
+                            <span aria-hidden="true">→</span>
                         </button>
                         <p class="form-note">
-                            <span class="lang-zh">送出後，我們將由專人與您確認需求。</span>
-                            <span class="lang-en">Our team will contact you to confirm the project requirements.</span>
+                            <span class="lang-zh">送出後將由專人與您聯絡；您也可以直接來電或寄信。</span>
+                            <span class="lang-en">Our team will follow up, or you can contact us directly by phone or email.</span>
                         </p>
                     </form>
                 </div>
