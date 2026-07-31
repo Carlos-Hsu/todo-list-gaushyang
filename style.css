@@ -435,6 +435,8 @@ html[lang="zh"] .lang-en { display: none !important; }
 .timeline-content h3 { font-size: 1.2rem; color: #fff; margin-bottom: 0px; }
 .timeline-content .year { font-weight: 700; color: var(--accent); display: block; margin-bottom: 0px; }
 .timeline-content p { font-size: 0.9rem; color: var(--text-secondary); margin: 0; }
+.timeline-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.timeline-tags > span { padding: 4px 9px; border: 1px solid rgba(100, 255, 218, 0.24); border-radius: 999px; color: var(--accent); background: rgba(100, 255, 218, 0.06); font-size: 0.72rem; line-height: 1.3; }
 .timeline-content .timeline-image { margin-top: 5px; }
 
 .timeline-images-grid {
@@ -558,23 +560,31 @@ html[lang="zh"] .lang-en { display: none !important; }
 /* --- 9. Contact --- */
 .contact-section {
     position: relative;
-    overflow: hidden; 
+    overflow: hidden;
     background-image: url('background/background.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* 視覺效果：固定背景，內容滾動 */
+    isolation: isolate;
 }
 
-/* 遮罩層：確保文字可讀性 */
-.contact-section::before {
-    content: '';
+.contact-wave-canvas {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
-    background: rgba(2, 12, 27, 0.7); 
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* 深色遮罩：左側保留波形層次，右側表單維持閱讀對比。 */
+.contact-wave-overlay {
+    position: absolute;
+    inset: 0;
     z-index: 1;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, rgba(2, 12, 27, 0.62) 0%, rgba(2, 12, 27, 0.78) 48%, rgba(2, 12, 27, 0.94) 100%),
+        linear-gradient(180deg, rgba(2, 12, 27, 0.2) 0%, rgba(2, 12, 27, 0.68) 100%);
 }
 
 .contact-wrapper { 
@@ -584,6 +594,14 @@ html[lang="zh"] .lang-en { display: none !important; }
     grid-template-columns: 1fr 2fr; 
     gap: 50px; 
 }
+.contact-info,
+.contact-form-wrapper {
+    padding: clamp(24px, 4vw, 44px);
+    border: 1px solid rgba(100, 255, 218, 0.12);
+    background: rgba(2, 12, 27, 0.46);
+    backdrop-filter: blur(8px);
+}
+.contact-info { align-self: start; }
 .contact-info .info-item { margin-top: 30px; }
 .contact-info strong { color: var(--accent); display: block; margin-bottom: 5px; }
 .contact-info p { color: var(--text-secondary); }
@@ -628,7 +646,8 @@ footer { text-align: center; padding: 30px 0; color: var(--text-secondary); font
     .wnc-desc { max-height: 100px; opacity: 1; transform: translateY(0); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
     /* Contact Mobile Adjustments */
-    .contact-section::before { opacity: 0.95; } /* 手機版加強遮罩 */
+    .contact-wave-overlay { background: rgba(2, 12, 27, 0.88); }
+    .contact-info, .contact-form-wrapper { padding: 24px 20px; }
     .trust-grid { grid-template-columns: 1fr 1fr; }
     .trust-item { min-height: 92px; padding: 18px 14px; border-bottom: 1px solid rgba(255,255,255,.08); font-size: .88rem; }
     .hero-btns, .form-row { grid-template-columns: 1fr; flex-direction: column; }
@@ -640,7 +659,7 @@ footer { text-align: center; padding: 30px 0; color: var(--text-secondary); font
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
     .fade-in { opacity: 1; transform: none; }
-    .contact-section { background-attachment: scroll; }
+    .contact-wave-canvas { display: none; }
 }
 
 .back-to-top { position: fixed; bottom: 30px; right: 20px; width: 40px; height: 40px; background: var(--card-bg); color: var(--accent); border: 1px solid var(--accent); display: flex; justify-content: center; align-items: center; border-radius: 4px; opacity: 0; transition: var(--transition); z-index: 1000; }

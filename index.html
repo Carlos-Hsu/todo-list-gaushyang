@@ -65,7 +65,7 @@
                 <div class="lang-switch-container">
                     <button id="lang-switch-btn" class="lang-switch-btn">EN</button>
                 </div>
-                <button class="hamburger" aria-label="開啟導覽選單" aria-expanded="false" aria-controls="primary-navigation">
+                <button class="hamburger" aria-label="開啟導覽選單" data-aria-zh="開啟導覽選單" data-aria-en="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -81,11 +81,11 @@
             <div class="hero-content fade-in">
                 <h1 class="hero-title">
                     <span class="lang-zh">從建置到維運，<span class="highlight">讓通訊穩定不中斷</span></span>
-                    <span class="lang-en">Engineering the <br><span class="highlight">Future of Connectivity</span></span>
+                    <span class="lang-en">From Deployment to Maintenance, <span class="highlight">Keeping Connectivity Always On</span></span>
                 </h1>
                 <p class="hero-subtitle">
                     <span class="lang-zh">38 年通訊工程經驗，提供基地台建設、網路優化、室內涵蓋與全台維運服務</span>
-                    <span class="lang-en">5G Network • C-RAN Architecture • LEO Satellite Solutions</span>
+                    <span class="lang-en">38 years of telecom engineering expertise in base station deployment, network optimization, indoor coverage, and nationwide maintenance</span>
                 </p>
                 <div class="hero-btns">
                     <a href="#services" class="cta-button primary">
@@ -105,7 +105,7 @@
             </a>
         </section>
 
-        <section class="trust-strip" aria-label="服務優勢">
+        <section class="trust-strip" aria-label="服務優勢" data-aria-zh="服務優勢" data-aria-en="Service advantages">
             <div class="container trust-grid">
                 <div class="trust-item"><strong>01</strong><span class="lang-zh">現勘與需求評估</span><span class="lang-en">Site survey & assessment</span></div>
                 <div class="trust-item"><strong>02</strong><span class="lang-zh">專案設計與施工</span><span class="lang-en">Design & construction</span></div>
@@ -516,18 +516,42 @@
                 
                 <!-- 2010s -->
                 <div class="decade-marker" role="separator"><span>2010s</span></div>
+                <article class="timeline-item right" role="listitem">
+                    <div class="timeline-node" aria-hidden="true"></div>
+                    <div class="timeline-content">
+                        <span class="year">2011</span>
+                        <h3>
+                            <span class="lang-zh">Ericsson 專業技術認證</span>
+                            <span class="lang-en">Ericsson Technical Certifications</span>
+                        </h3>
+                        <p>
+                            <span class="lang-zh">工程團隊取得多項 Ericsson ERT 與 3rd Carrier Implementation 技術認證，持續強化原廠設備建置能力。</span>
+                            <span class="lang-en">Our engineering team earned multiple Ericsson ERT and 3rd Carrier Implementation certifications, strengthening vendor-qualified deployment capabilities.</span>
+                        </p>
+                    </div>
+                </article>
                 <article class="timeline-item left" role="listitem">
                     <div class="timeline-node" aria-hidden="true"></div>
                     <div class="timeline-content">
-                        <span class="year">2014</span>
+                        <span class="year">
+                            <span class="lang-zh">2014–至今</span>
+                            <span class="lang-en">2014–Present</span>
+                        </span>
                         <h3>
                             <span class="lang-zh">中華電信工程</span>
                             <span class="lang-en">Chunghwa Telecom Project</span>
                         </h3>
                         <p>
-                            <span class="lang-zh">承攬中華電信網路技術分公司 4G、5G 多項電信工程項目。</span>
-                            <span class="lang-en">Contracted for various 4G/5G telecommunications engineering projects with Chunghwa Telecom Network Technology Subsidiary.</span>
+                            <span class="lang-zh">自 2014 年起持續承攬中華電信 4G、5G 電信工程，服務範圍涵蓋北部及東部五大中心。</span>
+                            <span class="lang-en">Since 2014, we have continuously delivered Chunghwa Telecom 4G and 5G engineering projects across five service centers in northern and eastern Taiwan.</span>
                         </p>
+                        <div class="timeline-tags">
+                            <span><span class="lang-zh">台北中心</span><span class="lang-en">Taipei Center</span></span>
+                            <span><span class="lang-zh">新北中心</span><span class="lang-en">New Taipei Center</span></span>
+                            <span><span class="lang-zh">花蓮中心</span><span class="lang-en">Hualien Center</span></span>
+                            <span><span class="lang-zh">基隆中心</span><span class="lang-en">Keelung Center</span></span>
+                            <span><span class="lang-zh">桃園中心</span><span class="lang-en">Taoyuan Center</span></span>
+                        </div>
                     </div>
                 </article>
                 <article class="timeline-item right" role="listitem">
@@ -535,8 +559,8 @@
                     <div class="timeline-content">
                         <span class="year">2017</span>
                         <h3>
-                            <span class="lang-zh">新北營運總部</span>
-                            <span class="lang-en">New Taipei Headquarters</span>
+                            <span class="lang-zh">新北營運據點</span>
+                            <span class="lang-en">New Taipei Operations Base</span>
                         </h3>
                         <p>
                             <span class="lang-zh">營運擴張階段：2017 年啟用的首個新北營運基地，標誌著高祥電信服務範圍正式深耕大台北地區。</span>
@@ -561,6 +585,20 @@
                             <span class="lang-en">Contracted for telecommunications engineering projects at the Taipei City Government New Year's Eve event.</span>
                         </p>
                         <div class="timeline-image"><img src="images/history-2020.jpg" alt="2020" loading="lazy"></div>
+                    </div>
+                </article>
+                <article class="timeline-item left" role="listitem">
+                    <div class="timeline-node" aria-hidden="true"></div>
+                    <div class="timeline-content">
+                        <span class="year">2020</span>
+                        <h3>
+                            <span class="lang-zh">C-RAN Turnkey 能力建立</span>
+                            <span class="lang-en">C-RAN Turnkey Capability</span>
+                        </h3>
+                        <p>
+                            <span class="lang-zh">建立 C-RAN Turnkey 與自辦工程執行能力，持續累積集中式無線接取網路建置實績。</span>
+                            <span class="lang-en">Established C-RAN turnkey and self-managed project capabilities, building a growing track record in centralized radio access network deployment.</span>
+                        </p>
                     </div>
                 </article>
                 <article class="timeline-item left" role="listitem">
@@ -598,6 +636,20 @@
                 <article class="timeline-item left" role="listitem">
                     <div class="timeline-node" aria-hidden="true"></div>
                     <div class="timeline-content">
+                        <span class="year">2023</span>
+                        <h3>
+                            <span class="lang-zh">愛立信職安績效獎</span>
+                            <span class="lang-en">Ericsson OHS Performance Award</span>
+                        </h3>
+                        <p>
+                            <span class="lang-zh">獲頒 Ericsson Excellent OHS Performance Award，肯定工程現場的職業安全衛生表現。</span>
+                            <span class="lang-en">Received the Ericsson Excellent OHS Performance Award in recognition of occupational health and safety performance.</span>
+                        </p>
+                    </div>
+                </article>
+                <article class="timeline-item left" role="listitem">
+                    <div class="timeline-node" aria-hidden="true"></div>
+                    <div class="timeline-content">
                         <span class="year">2024</span>
                         <h3>
                             <span class="lang-zh">衛星通訊整合</span>
@@ -610,17 +662,31 @@
                         <div class="timeline-image"><img src="images/history-2024.jpg" alt="2024" loading="lazy"></div>
                     </div>
                 </article>
+                <article class="timeline-item right" role="listitem">
+                    <div class="timeline-node" aria-hidden="true"></div>
+                    <div class="timeline-content">
+                        <span class="year">2024</span>
+                        <h3>
+                            <span class="lang-zh">電信工程專業資格</span>
+                            <span class="lang-en">Telecom Engineering Qualifications</span>
+                        </h3>
+                        <p>
+                            <span class="lang-zh">取得 NCC 電信工程業登記執照，並加入台灣區電信工程工業同業公會。</span>
+                            <span class="lang-en">Obtained an NCC telecommunications engineering business license and joined the Taiwan Telecommunications Engineering Industry Association.</span>
+                        </p>
+                    </div>
+                </article>
                 <article class="timeline-item left" role="listitem">
                     <div class="timeline-node" aria-hidden="true"></div>
                     <div class="timeline-content">
                         <span class="year">2025</span>
                         <h3>
-                            <span class="lang-zh">安全品質認證</span>
-                            <span class="lang-en">ISO Certification</span>
+                            <span class="lang-zh">職業安全衛生認證</span>
+                            <span class="lang-en">Occupational Health & Safety Certification</span>
                         </h3>
                         <p>
-                            <span class="lang-zh">取得 ISO 45001:2018 品質認證。</span>
-                            <span class="lang-en">Obtained ISO 45001:2018 Occupational Health & Safety certification.</span>
+                            <span class="lang-zh">取得 ISO 45001:2018 職業安全衛生管理系統認證，適用範圍涵蓋電信基地台設備安裝及維運。</span>
+                            <span class="lang-en">Achieved ISO 45001:2018 certification for the installation and maintenance of telecommunications station equipment.</span>
                         </p>
                         <div class="timeline-image"><img src="images/history-2025.jpg" alt="2025" loading="lazy"></div>
                     </div>
@@ -659,6 +725,8 @@
 
         <!-- Contact Section -->
         <section id="contact" class="section-padding contact-section">
+            <canvas id="contact-wave-canvas" class="contact-wave-canvas" aria-hidden="true"></canvas>
+            <div class="contact-wave-overlay" aria-hidden="true"></div>
             <div class="container contact-wrapper">
                 <div class="contact-info fade-in">
                     <h2 class="section-title">
@@ -670,16 +738,16 @@
                         <span class="lang-en">Ready to upgrade your network infrastructure?</span>
                     </p>
                     <div class="info-item">
-                        <strong>HQ Location</strong>
+                        <strong><span class="lang-zh">公司地址</span><span class="lang-en">Headquarters</span></strong>
                         <p class="lang-zh">236 新北市土城區自強街28號</p>
                         <p class="lang-en">No. 28, Ziqiang St., Tucheng Dist., New Taipei City 236</p>
                     </div>
                     <div class="info-item">
-                        <strong>Phone</strong>
+                        <strong><span class="lang-zh">聯絡電話</span><span class="lang-en">Phone</span></strong>
                         <p><a href="tel:+886222681177">02 2268 1177</a></p>
                     </div>
                     <div class="info-item">
-                        <strong>Email</strong>
+                        <strong><span class="lang-zh">電子信箱</span><span class="lang-en">Email</span></strong>
                         <p><a href="mailto:service@gaushyang.com">service@gaushyang.com</a></p>
                     </div>
                 </div>
@@ -726,13 +794,13 @@
                                 <span class="lang-en">Service needed</span>
                             </label>
                             <select id="service" name="service" required>
-                                <option value="" selected disabled>請選擇 / Select</option>
-                                <option value="基地台建設">基地台建設 / Base station construction</option>
-                                <option value="維護與障礙排除">維護與障礙排除 / Maintenance</option>
-                                <option value="網路優化">網路優化 / Network optimization</option>
-                                <option value="室內涵蓋">室內涵蓋 / Indoor coverage</option>
-                                <option value="衛星通訊">衛星通訊 / Satellite communication</option>
-                                <option value="其他">其他 / Other</option>
+                                <option value="" data-zh="請選擇" data-en="Select a service" selected disabled>請選擇</option>
+                                <option value="基地台建設" data-zh="基地台建設" data-en="Base station construction">基地台建設</option>
+                                <option value="維護與障礙排除" data-zh="維護與障礙排除" data-en="Maintenance and fault recovery">維護與障礙排除</option>
+                                <option value="網路優化" data-zh="網路優化" data-en="Network optimization">網路優化</option>
+                                <option value="室內涵蓋" data-zh="室內涵蓋" data-en="Indoor coverage">室內涵蓋</option>
+                                <option value="衛星通訊" data-zh="衛星通訊" data-en="Satellite communication">衛星通訊</option>
+                                <option value="其他" data-zh="其他" data-en="Other">其他</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -740,7 +808,7 @@
                                 <span class="lang-zh">聯絡訊息</span>
                                 <span class="lang-en">Message</span>
                             </label>
-                          <textarea id="message" name="message" rows="5" placeholder="請簡述地點、工程範圍與預計時程" required></textarea>
+                          <textarea id="message" name="message" rows="5" data-placeholder-zh="請簡述地點、工程範圍與預計時程" data-placeholder-en="Please describe the location, scope of work, and expected schedule" placeholder="請簡述地點、工程範圍與預計時程" required></textarea>
                         </div>
                         <button type="submit" class="cta-button primary full-width">
                             <span class="lang-zh">傳送訊息</span>
@@ -764,12 +832,12 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <a href="#" class="back-to-top" aria-label="回到頁面頂端">↑</a>
+    <a href="#" class="back-to-top" aria-label="回到頁面頂端" data-aria-zh="回到頁面頂端" data-aria-en="Back to top">↑</a>
 
     <!-- PDF Viewer Modal -->
     <div id="pdf-modal" class="pdf-modal">
         <div class="pdf-modal-content">
-            <button id="pdf-close-btn" class="pdf-close-btn" aria-label="關閉 PDF">×</button>
+            <button id="pdf-close-btn" class="pdf-close-btn" aria-label="關閉 PDF" data-aria-zh="關閉 PDF" data-aria-en="Close PDF">×</button>
             <div class="pdf-viewer-container">
                 <iframe id="pdf-iframe" src="" width="100%" height="100%" frameborder="0"></iframe>
             </div>

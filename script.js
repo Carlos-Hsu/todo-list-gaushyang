@@ -146,8 +146,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const setLanguage = (lang) => {
         document.documentElement.setAttribute('lang', lang);
         localStorage.setItem('gaushyang_lang', lang);
+        document.title = lang === 'zh'
+            ? '高祥電信｜基地台建設、網路優化與維運服務'
+            : 'Gaushyang Telecom | Base Station Deployment & Maintenance';
+
+        const description = document.querySelector('meta[name="description"]');
+        if (description) {
+            description.content = lang === 'zh'
+                ? '高祥電信提供基地台建設、5G 網路優化、室內涵蓋、低軌衛星通訊及全台維運服務。'
+                : 'Gaushyang Telecom provides base station deployment, 5G network optimization, indoor coverage, LEO satellite communications, and nationwide maintenance services.';
+        }
+
+        document.querySelectorAll('[data-zh][data-en]').forEach(element => {
+            element.textContent = lang === 'zh' ? element.dataset.zh : element.dataset.en;
+        });
+        document.querySelectorAll('[data-placeholder-zh][data-placeholder-en]').forEach(element => {
+            element.placeholder = lang === 'zh'
+                ? element.dataset.placeholderZh
+                : element.dataset.placeholderEn;
+        });
+        document.querySelectorAll('[data-aria-zh][data-aria-en]').forEach(element => {
+            element.setAttribute(
+                'aria-label',
+                lang === 'zh' ? element.dataset.ariaZh : element.dataset.ariaEn
+            );
+        });
+
         if (langSwitchBtn) {
             langSwitchBtn.textContent = lang === 'zh' ? 'EN' : '繁中';
+            langSwitchBtn.setAttribute(
+                'aria-label',
+                lang === 'zh' ? 'Switch to English' : '切換至繁體中文'
+            );
         }
     };
 
@@ -290,4 +320,100 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinksList.forEach(link => link.classList.remove('active'));
         }
     });
+
+    // 13. Contact background: responsive telecom signal waves
+    const waveCanvas = document.getElementById('contact-wave-canvas');
+    const contactSection = document.getElementById('contact');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    if (waveCanvas && contactSection && !reduceMotion.matches) {
+        const context = waveCanvas.getContext('2d');
+        let width = 0;
+        let height = 0;
+        let animationFrame = null;
+        let startTime = 0;
+        let isVisible = false;
+
+        const resizeWaveCanvas = () => {
+            const rect = contactSection.getBoundingClientRect();
+            const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
+            width = Math.max(1, rect.width);
+            height = Math.max(1, rect.height);
+            waveCanvas.width = Math.round(width * pixelRatio);
+            waveCanvas.height = Math.round(height * pixelRatio);
+            waveCanvas.style.width = `${width}px`;
+            waveCanvas.style.height = `${height}px`;
+            context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+        };
+
+        const drawSignalWave = (time, config) => {
+            const centerY = height * config.y;
+            const gradient = context.createLinearGradient(0, 0, width, 0);
+            gradient.addColorStop(0, 'rgba(0, 163, 224, 0)');
+            gradient.addColorStop(0.24, config.color);
+            gradient.addColorStop(0.72, config.color);
+            gradient.addColorStop(1, 'rgba(100, 255, 218, 0)');
+
+            context.beginPath();
+            for (let x = -20; x <= width + 20; x += 7) {
+                const progress = Math.min(1, Math.max(0, x / width));
+                const envelope = Math.sin(Math.PI * progress);
+                const primary = Math.sin((x * config.frequency) + (time * config.speed));
+                const secondary = Math.sin((x * config.frequency * 0.42) - (time * config.speed * 0.63));
+                const y = centerY + ((primary * 0.72 + secondary * 0.28) * config.amplitude * envelope);
+                if (x === -20) context.moveTo(x, y);
+                else context.lineTo(x, y);
+            }
+            context.strokeStyle = gradient;
+            context.lineWidth = config.lineWidth;
+            context.shadowColor = config.glow;
+            context.shadowBlur = config.blur;
+            context.stroke();
+        };
+
+        const drawNodes = (time) => {
+            const nodeCount = width < 768 ? 7 : 13;
+            for (let index = 0; index < nodeCount; index++) {
+                const progress = ((index / nodeCount) + ((time * 0.000025) % 1)) % 1;
+                const x = progress * width;
+                const y = height * 0.52 + Math.sin(progress * Math.PI * 4 + time * 0.00055) * height * 0.13;
+                const radius = 1.5 + Math.sin(time * 0.002 + index) * 0.6;
+                context.beginPath();
+                context.arc(x, y, radius, 0, Math.PI * 2);
+                context.fillStyle = 'rgba(100, 255, 218, 0.72)';
+                context.shadowColor = '#64ffda';
+                context.shadowBlur = 12;
+                context.fill();
+            }
+        };
+
+        const renderWaves = (timestamp) => {
+            if (!startTime) startTime = timestamp;
+            const time = timestamp - startTime;
+            context.clearRect(0, 0, width, height);
+            context.globalCompositeOperation = 'lighter';
+
+            drawSignalWave(time, { y: 0.38, amplitude: height * 0.11, frequency: 0.010, speed: 0.0012, lineWidth: 1.2, color: 'rgba(0, 163, 224, 0.48)', glow: '#00a3e0', blur: 14 });
+            drawSignalWave(time, { y: 0.52, amplitude: height * 0.17, frequency: 0.014, speed: -0.0010, lineWidth: 1.8, color: 'rgba(100, 255, 218, 0.52)', glow: '#64ffda', blur: 18 });
+            drawSignalWave(time, { y: 0.66, amplitude: height * 0.09, frequency: 0.019, speed: 0.00075, lineWidth: 0.9, color: 'rgba(72, 122, 255, 0.38)', glow: '#487aff', blur: 12 });
+            drawNodes(time);
+
+            context.globalCompositeOperation = 'source-over';
+            if (isVisible) animationFrame = window.requestAnimationFrame(renderWaves);
+        };
+
+        const waveObserver = new IntersectionObserver((entries) => {
+            isVisible = entries[0].isIntersecting;
+            if (isVisible && !animationFrame) {
+                animationFrame = window.requestAnimationFrame(renderWaves);
+            } else if (!isVisible && animationFrame) {
+                window.cancelAnimationFrame(animationFrame);
+                animationFrame = null;
+            }
+        }, { threshold: 0.05 });
+
+        resizeWaveCanvas();
+        waveObserver.observe(contactSection);
+        window.addEventListener('resize', resizeWaveCanvas, { passive: true });
+    }
         });
