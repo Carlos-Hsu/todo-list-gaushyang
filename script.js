@@ -416,4 +416,52 @@ document.addEventListener('DOMContentLoaded', () => {
         waveObserver.observe(contactSection);
         window.addEventListener('resize', resizeWaveCanvas, { passive: true });
     }
+
+    // 14. GAUSHYANG 品牌影片字樣遮罩
+    const brandFilm = document.querySelector('.brand-film');
+    const brandVideo = document.querySelector('.brand-film-video');
+
+    if (brandFilm && !reduceMotion.matches) {
+        let brandFrame = null;
+        const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+
+        const updateBrandFilm = () => {
+            const rect = brandFilm.getBoundingClientRect();
+            const scrollDistance = Math.max(1, brandFilm.offsetHeight - window.innerHeight);
+            const progress = clamp(-rect.top / scrollDistance);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const maskOpacity = clamp(progress / 0.22);
+            const wordScale = 1 + 27 * (1 - eased);
+            const copyOpacity = clamp((progress - 0.72) / 0.2);
+
+            brandFilm.style.setProperty('--brand-mask-opacity', maskOpacity.toFixed(3));
+            brandFilm.style.setProperty('--brand-word-scale', wordScale.toFixed(3));
+            brandFilm.style.setProperty('--brand-copy-opacity', copyOpacity.toFixed(3));
+            brandFrame = null;
+        };
+
+        const requestBrandUpdate = () => {
+            if (!brandFrame) brandFrame = window.requestAnimationFrame(updateBrandFilm);
+        };
+
+        updateBrandFilm();
+        window.addEventListener('scroll', requestBrandUpdate, { passive: true });
+        window.addEventListener('resize', requestBrandUpdate, { passive: true });
+    }
+
+    if (brandVideo) {
+        brandVideo.addEventListener('error', () => {
+            brandFilm?.classList.add('video-unavailable');
+        });
+
+        const brandVideoObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                brandVideo.play().catch(() => {});
+            } else {
+                brandVideo.pause();
+            }
+        }, { threshold: 0.05 });
+
+        brandVideoObserver.observe(brandFilm);
+    }
         });
