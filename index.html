@@ -12,9 +12,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
-<body class="debug-mode">
+<body>
+    <a class="skip-link" href="#main-content">
+        <span class="lang-zh">跳至主要內容</span>
+        <span class="lang-en">Skip to main content</span>
+    </a>
 
     <!-- Preloader -->
     <div class="preloader">
@@ -37,7 +40,7 @@
                     <img src="images/gaushyang-logo.jpg" alt="Gaushyang Logo" class="logo">
                     <span class="brand-name">Gaushyang</span>
                 </a>
-                <ul class="nav-links">
+                <ul class="nav-links" id="primary-navigation">
                     <li><a href="#services">
                         <span class="lang-zh">核心方案</span>
                         <span class="lang-en">Services</span>
@@ -62,7 +65,7 @@
                 <div class="lang-switch-container">
                     <button id="lang-switch-btn" class="lang-switch-btn">EN</button>
                 </div>
-                <button class="hamburger" aria-label="Toggle navigation">
+                <button class="hamburger" aria-label="開啟導覽選單" aria-expanded="false" aria-controls="primary-navigation">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -71,17 +74,17 @@
         </header>
     </div>
 
-    <main>
+    <main id="main-content">
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-slideshow"></div> <div class="hero-overlay"></div>
             <div class="hero-content fade-in">
                 <h1 class="hero-title">
-                    <span class="lang-zh">工程品質 • <span class="highlight">連結未來通訊</span></span>
+                    <span class="lang-zh">從建置到維運，<span class="highlight">讓通訊穩定不中斷</span></span>
                     <span class="lang-en">Engineering the <br><span class="highlight">Future of Connectivity</span></span>
                 </h1>
                 <p class="hero-subtitle">
-                    <span class="lang-zh">5G 網路部署 • C-RAN 集中式架構 • OneWeb 低軌衛星解決方案</span>
+                    <span class="lang-zh">38 年通訊工程經驗，提供基地台建設、網路優化、室內涵蓋與全台維運服務</span>
                     <span class="lang-en">5G Network • C-RAN Architecture • LEO Satellite Solutions</span>
                 </p>
                 <div class="hero-btns">
@@ -100,6 +103,15 @@
                 <span>SCROLL</span>
                 <div class="scroll-line"></div>
             </a>
+        </section>
+
+        <section class="trust-strip" aria-label="服務優勢">
+            <div class="container trust-grid">
+                <div class="trust-item"><strong>01</strong><span class="lang-zh">現勘與需求評估</span><span class="lang-en">Site survey & assessment</span></div>
+                <div class="trust-item"><strong>02</strong><span class="lang-zh">專案設計與施工</span><span class="lang-en">Design & construction</span></div>
+                <div class="trust-item"><strong>03</strong><span class="lang-zh">測試、優化與驗收</span><span class="lang-en">Testing & acceptance</span></div>
+                <div class="trust-item"><strong>04</strong><span class="lang-zh">持續維護與障礙排除</span><span class="lang-en">Maintenance & recovery</span></div>
+            </div>
         </section>
 
         <!-- 加分項目一：績效指標計數器 (Statistics Counter) -->
@@ -132,6 +144,68 @@
                         <div class="stat-label">
                             <span class="lang-zh">台澎金馬綠島全面覆蓋</span>
                             <span class="lang-en">Full Coverage (Incl. Offshore Islands)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-certifications">
+                    <div class="stats-cert-header fade-in">
+                        <p class="eyebrow">
+                            <span class="lang-zh">專業認證與安全標準</span>
+                            <span class="lang-en">Compliance & Certifications</span>
+                        </p>
+                        <h2>
+                            <span class="lang-zh">以制度與資格，守住每一項工程品質</span>
+                            <span class="lang-en">Quality backed by standards and qualifications</span>
+                        </h2>
+                        <p>
+                            <span class="lang-zh">遵循職業安全衛生規範，結合專案管理與資通訊工程資格，提供可靠的建置與維運服務。</span>
+                            <span class="lang-en">Combining occupational safety standards, project management, and telecom engineering qualifications for reliable delivery.</span>
+                        </p>
+                    </div>
+                    <div class="cert-grid fade-in">
+                        <div class="cert-card">
+                            <div class="cert-icon-wrapper">
+                                <svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                    <path d="M9 11l2 2 4-4"/>
+                                </svg>
+                            </div>
+                            <h3 class="cert-name">ISO 45001:2018</h3>
+                            <p class="cert-desc">
+                                <span class="lang-zh">職業安全衛生管理系統認證</span>
+                                <span class="lang-en">Occupational Health & Safety Management Certificate</span>
+                            </p>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-icon-wrapper">
+                                <svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                            </div>
+                            <h3 class="cert-name">Project Management</h3>
+                            <p class="cert-desc">
+                                <span class="lang-zh">專案管理與工程調度能力</span>
+                                <span class="lang-en">Project Dispatch & Management</span>
+                            </p>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-icon-wrapper">
+                                <svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                                    <line x1="6" y1="6" x2="6.01" y2="6"/>
+                                    <line x1="6" y1="18" x2="6.01" y2="18"/>
+                                </svg>
+                            </div>
+                            <h3 class="cert-name">NCC Certified</h3>
+                            <p class="cert-desc">
+                                <span class="lang-zh">資通訊設備專業工程資格</span>
+                                <span class="lang-en">Professional Telecom Equipment Qualification</span>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -583,67 +657,6 @@
             </div>
         </section>
 
-        <!-- 加分項目二：專業認證與安全標準牆 (Compliance & Certifications) -->
-        <section id="certifications" class="section-padding text-center">
-            <div class="container">
-                <div class="section-header fade-in" style="margin: 0 auto 60px auto;">
-                    <h2 class="section-title">
-                        <span class="lang-zh">專業認證與安全標準</span>
-                        <span class="lang-en">Compliance & Certifications</span>
-                    </h2>
-                    <p class="section-desc">
-                        <span class="lang-zh">嚴格遵守國際與國家級品質安衛標準，提供最值得信賴的工程保障。</span>
-                        <span class="lang-en">Adhering strictly to international quality and safety management standards to ensure engineering excellence.</span>
-                    </p>
-                </div>
-                <div class="cert-grid fade-in">
-                    <div class="cert-card">
-                        <div class="cert-icon-wrapper">
-                            <svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                                <path d="M9 11l2 2 4-4"/>
-                            </svg>
-                        </div>
-                        <h3 class="cert-name">ISO 45001:2018</h3>
-                        <p class="cert-desc">
-                            <span class="lang-zh">職業安全衛生管理系統認證</span>
-                            <span class="lang-en">Occupational Health & Safety Management Certificate</span>
-                        </p>
-                    </div>
-                    <div class="cert-card" style="transition-delay: 0.1s;">
-                        <div class="cert-icon-wrapper">
-                            <svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                                <line x1="16" y1="2" x2="16" y2="6"/>
-                                <line x1="8" y1="2" x2="8" y2="6"/>
-                                <line x1="3" y1="10" x2="21" y2="10"/>
-                            </svg>
-                        </div>
-                        <h3 class="cert-name">Project Management</h3>
-                        <p class="cert-desc">
-                            <span class="lang-zh">卓越專案管理與調度能力</span>
-                            <span class="lang-en">Excellence in Project Dispatch & Management</span>
-                        </p>
-                    </div>
-                    <div class="cert-card" style="transition-delay: 0.2s;">
-                        <div class="cert-icon-wrapper">
-                            <svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
-                                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
-                                <line x1="6" y1="6" x2="6.01" y2="6"/>
-                                <line x1="6" y1="18" x2="6.01" y2="18"/>
-                            </svg>
-                        </div>
-                        <h3 class="cert-name">NCC Certified</h3>
-                        <p class="cert-desc">
-                            <span class="lang-zh">資通訊設備專業工程資格</span>
-                            <span class="lang-en">Professional Telecom Equipment Qualification</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Contact Section -->
         <section id="contact" class="section-padding contact-section">
             <div class="container contact-wrapper">
@@ -663,41 +676,80 @@
                     </div>
                     <div class="info-item">
                         <strong>Phone</strong>
-                        <p>02 2268 1177</p>
+                        <p><a href="tel:+886222681177">02 2268 1177</a></p>
                     </div>
                     <div class="info-item">
                         <strong>Email</strong>
-                        <p>service@gaushyang.com</p>
+                        <p><a href="mailto:service@gaushyang.com">service@gaushyang.com</a></p>
                     </div>
                 </div>
                 
                 <div class="contact-form-wrapper fade-in">
-                    <form class="modern-form">
+                    <form class="modern-form" name="project-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="project-inquiry">
+                        <p class="form-honeypot" aria-hidden="true">
+                            <label>請勿填寫此欄位 <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+                        </p>
                         <div class="form-group">
                             <label for="name">
                                 <span class="lang-zh">姓名</span>
                                 <span class="lang-en">Name</span>
                             </label>
-                            <input type="text" id="name" required>
+                            <input type="text" id="name" name="name" autocomplete="name" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="company">
+                                    <span class="lang-zh">公司名稱</span>
+                                    <span class="lang-en">Company</span>
+                                </label>
+                                <input type="text" id="company" name="company" autocomplete="organization">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">
+                                    <span class="lang-zh">聯絡電話</span>
+                                    <span class="lang-en">Phone</span>
+                                </label>
+                                <input type="tel" id="phone" name="phone" autocomplete="tel">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="email">
                                 <span class="lang-zh">電子信箱</span>
                                 <span class="lang-en">Email</span>
                             </label>
-                            <input type="email" id="email" required>
+                            <input type="email" id="email" name="email" autocomplete="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">
+                                <span class="lang-zh">服務需求</span>
+                                <span class="lang-en">Service needed</span>
+                            </label>
+                            <select id="service" name="service" required>
+                                <option value="" selected disabled>請選擇 / Select</option>
+                                <option value="基地台建設">基地台建設 / Base station construction</option>
+                                <option value="維護與障礙排除">維護與障礙排除 / Maintenance</option>
+                                <option value="網路優化">網路優化 / Network optimization</option>
+                                <option value="室內涵蓋">室內涵蓋 / Indoor coverage</option>
+                                <option value="衛星通訊">衛星通訊 / Satellite communication</option>
+                                <option value="其他">其他 / Other</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="message">
                                 <span class="lang-zh">聯絡訊息</span>
                                 <span class="lang-en">Message</span>
                             </label>
-                          <textarea id="message" rows="4" required></textarea>
+                          <textarea id="message" name="message" rows="5" placeholder="請簡述地點、工程範圍與預計時程" required></textarea>
                         </div>
                         <button type="submit" class="cta-button primary full-width">
                             <span class="lang-zh">傳送訊息</span>
                             <span class="lang-en">Send Message</span>
                         </button>
+                        <p class="form-note">
+                            <span class="lang-zh">送出後，我們將由專人與您確認需求。</span>
+                            <span class="lang-en">Our team will contact you to confirm the project requirements.</span>
+                        </p>
                     </form>
                 </div>
             </div>
@@ -707,18 +759,17 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Gaushyang Telecom Engineering Co., Ltd. All Rights Reserved.</p>
-            <p id="last-updated" style="font-size: 0.8em; color: #888; margin-top: 5px;">最後更新時間：正在載入...</p>
+            <p>&copy; <span id="current-year">2026</span> Gaushyang Telecom Engineering Co., Ltd. All Rights Reserved.</p>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <a href="#" class="back-to-top">↑</a>
+    <a href="#" class="back-to-top" aria-label="回到頁面頂端">↑</a>
 
     <!-- PDF Viewer Modal -->
     <div id="pdf-modal" class="pdf-modal">
         <div class="pdf-modal-content">
-            <button id="pdf-close-btn" class="pdf-close-btn">×</button>
+            <button id="pdf-close-btn" class="pdf-close-btn" aria-label="關閉 PDF">×</button>
             <div class="pdf-viewer-container">
                 <iframe id="pdf-iframe" src="" width="100%" height="100%" frameborder="0"></iframe>
             </div>
@@ -727,8 +778,6 @@
 
     <!-- External Libraries & Scripts -->
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

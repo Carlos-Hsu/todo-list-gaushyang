@@ -19,6 +19,10 @@
 body { background-color: var(--bg-color); color: var(--text-primary); font-family: var(--font-main); line-height: 1.6; overflow-x: hidden; }
 a { text-decoration: none; color: inherit; transition: var(--transition); }
 ul { list-style: none; }
+button, input, textarea, select { font: inherit; }
+.skip-link { position: fixed; top: 10px; left: 10px; z-index: 10001; padding: 10px 16px; background: #fff; color: #020c1b; transform: translateY(-150%); }
+.skip-link:focus { transform: translateY(0); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 
 /* --- 1.1 Language Switcher Styles --- */
 /* 優雅的多國語言控制邏輯：基於 <html> 標籤上的 lang 屬性 */
@@ -61,10 +65,22 @@ html[lang="zh"] .lang-en { display: none !important; }
 .logo-link { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.2rem; color: var(--text-primary); }
 .logo { height: 40px; width: auto; border-radius: 4px; background: #fff; padding: 2px; }
 .nav-links { display: flex; gap: 30px; align-items: center; }
-.nav-links a { font-size: 0.9rem; color: var(--text-primary); font-weight: 500; }
+.nav-links a {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    position: relative;
+    padding: 8px 16px;
+    border-radius: 4px;
+}
 .nav-links a:hover { color: var(--accent); }
-.nav-cta { border: 1px solid var(--accent); padding: 8px 16px; border-radius: 4px; color: var(--accent) !important; }
-.nav-cta:hover { background: rgba(100, 255, 218, 0.1); }
+.nav-links a.active {
+    background-color: rgba(100, 255, 218, 0.1);
+    border: 1px solid rgba(100, 255, 218, 0.3);
+    font-weight: 600;
+}
+.nav-cta { border: 1px solid var(--accent); padding: 8px 16px; border-radius: 4px; color: var(--accent) !important; transition: var(--transition); }
+.nav-cta:hover, .nav-cta.active { background: rgba(100, 255, 218, 0.15) !important; box-shadow: 0 0 10px rgba(100, 255, 218, 0.1); }
 .hamburger { display: none; background: none; border: none; cursor: pointer; }
 .hamburger span { display: block; width: 25px; height: 3px; background: var(--accent); margin: 5px 0; }
 
@@ -127,6 +143,12 @@ html[lang="zh"] .lang-en { display: none !important; }
 .scroll-line { width: 1px; height: 60px; background: var(--text-secondary); animation: scrollDown 2s infinite; }
 @keyframes scrollDown { 0% { transform-origin: top; transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform-origin: bottom; transform: scaleY(0); } }
 
+.trust-strip { background: #071426; border-top: 1px solid rgba(100, 255, 218, 0.12); border-bottom: 1px solid rgba(100, 255, 218, 0.12); }
+.trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.trust-item { min-height: 112px; padding: 26px 24px; display: flex; align-items: center; gap: 14px; border-right: 1px solid rgba(255,255,255,.08); color: var(--text-primary); }
+.trust-item:last-child { border-right: 0; }
+.trust-item strong { color: var(--accent); font-size: 1.35rem; }
+
 /* --- 4.1 Statistics Counter Section (加分項目一) --- */
 .stats-section {
     background: linear-gradient(135deg, var(--bg-color) 0%, var(--bg-light) 100%);
@@ -165,6 +187,39 @@ html[lang="zh"] .lang-en { display: none !important; }
     color: var(--text-secondary);
     font-weight: 500;
     letter-spacing: 1px;
+}
+.stats-certifications {
+    margin-top: 64px;
+    padding-top: 54px;
+    border-top: 1px solid rgba(100, 255, 218, 0.18);
+}
+.stats-cert-header {
+    max-width: 760px;
+    margin: 0 auto 34px;
+    text-align: center;
+}
+.stats-cert-header .eyebrow {
+    color: var(--accent);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.stats-cert-header h2 {
+    color: var(--text-primary);
+    font-size: clamp(1.55rem, 3vw, 2.25rem);
+    line-height: 1.3;
+    margin-bottom: 12px;
+}
+.stats-cert-header > p:last-child {
+    color: var(--text-secondary);
+}
+.stats-certifications .cert-grid {
+    margin-top: 0;
+}
+.stats-certifications .cert-card {
+    padding: 28px 24px;
 }
 
 /* --- 5. Services Grid (WNC Style - Immersive) --- */
@@ -534,8 +589,13 @@ html[lang="zh"] .lang-en { display: none !important; }
 .contact-info p { color: var(--text-secondary); }
 .modern-form .form-group { margin-bottom: 20px; }
 .modern-form label { display: block; margin-bottom: 8px; color: var(--text-primary); font-size: 0.9rem; }
-.modern-form input, .modern-form textarea { width: 100%; padding: 12px; background: var(--card-bg); border: 1px solid var(--bg-light); border-radius: 4px; color: var(--text-primary); transition: var(--transition); }
-.modern-form input:focus, .modern-form textarea:focus { border-color: var(--accent); outline: none; }
+.modern-form input, .modern-form textarea, .modern-form select { width: 100%; padding: 12px; background: var(--card-bg); border: 1px solid rgba(204,214,246,.28); border-radius: 4px; color: var(--text-primary); transition: var(--transition); }
+.modern-form input:focus, .modern-form textarea:focus, .modern-form select:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px rgba(100,255,218,.12); }
+.modern-form select option { background: var(--card-bg); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.form-honeypot { position: absolute; left: -9999px; }
+.form-note { margin-top: 12px; color: var(--text-secondary); font-size: .85rem; text-align: center; }
+.contact-info a:hover { color: var(--accent); }
 .full-width { width: 100%; }
 
 /* --- Footer --- */
@@ -569,6 +629,18 @@ footer { text-align: center; padding: 30px 0; color: var(--text-secondary); font
 
     /* Contact Mobile Adjustments */
     .contact-section::before { opacity: 0.95; } /* 手機版加強遮罩 */
+    .trust-grid { grid-template-columns: 1fr 1fr; }
+    .trust-item { min-height: 92px; padding: 18px 14px; border-bottom: 1px solid rgba(255,255,255,.08); font-size: .88rem; }
+    .hero-btns, .form-row { grid-template-columns: 1fr; flex-direction: column; }
+    .hero-btns .cta-button { width: 100%; }
+    .stats-certifications { margin-top: 44px; padding-top: 38px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+    .fade-in { opacity: 1; transform: none; }
+    .contact-section { background-attachment: scroll; }
 }
 
 .back-to-top { position: fixed; bottom: 30px; right: 20px; width: 40px; height: 40px; background: var(--card-bg); color: var(--accent); border: 1px solid var(--accent); display: flex; justify-content: center; align-items: center; border-radius: 4px; opacity: 0; transition: var(--transition); z-index: 1000; }

@@ -73,11 +73,13 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             hamburger.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', String(navLinks.classList.contains('active')));
         });
         links.forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
                 hamburger.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
             });
         });
     }
@@ -221,16 +223,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     stats.forEach(el => statsObserver.observe(el));
 
-    // 10. 最後更新時間顯示
-    const lastUpdatedEl = document.getElementById('last-updated');
-    if (lastUpdatedEl) {
-        const now = new Date();
-        formattedDate = now.toLocaleString('zh-TW', { 
-            year: 'numeric', month: '2-digit', day: '2-digit', 
-            hour: '2-digit', minute: '2-digit', second: '2-digit' 
-        });
-        lastUpdatedEl.textContent = `最後更新時間：${formattedDate}`;
-        }
+    // 10. 頁尾年份
+    const currentYearEl = document.getElementById('current-year');
+    if (currentYearEl) currentYearEl.textContent = new Date().getFullYear();
 
         // 11. Hero Slogan Rotator Logic (標語自動切換翻轉)
         const slogans = document.querySelectorAll('.slogan-item');
@@ -260,4 +255,39 @@ document.addEventListener('DOMContentLoaded', () => {
         // 設定自動切換間隔 (例如 4 秒)
         setInterval(rotateSlogan, 4000);
         }
+
+    // 12. Scroll Spy (導覽列追蹤標記) - 優化版
+    const navLinksList = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('section[id]');
+
+    const scrollSpyOptions = {
+        threshold: 0, // 只要有一點點進入範圍就觸發
+        rootMargin: "-45% 0px -45% 0px" // 以螢幕水平中心線為基準感應
+    };
+
+    const scrollSpyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+
+                // 清除所有 active 並根據當前 ID 亮起對應項目
+                navLinksList.forEach(link => {
+                    link.classList.remove('active');
+                    const href = link.getAttribute('href');
+                    if (href === `#${id}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, scrollSpyOptions);
+
+    sections.forEach(section => scrollSpyObserver.observe(section));
+
+    // 當捲動回到最頂端時，手動清除所有亮起狀態（回到 Hero 區）
+    window.addEventListener('scroll', () => {
+        if (window.scrollY < 100) {
+            navLinksList.forEach(link => link.classList.remove('active'));
+        }
+    });
         });
